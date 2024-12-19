@@ -2,6 +2,7 @@
 import {ElDivider} from "element-plus"
 import {get_build_time} from "@/utils/build_time"
 import {formatDate} from "@/utils/time"
+import ToGithub from "@/components/togithub.vue";
 
 const build_time = ref(formatDate(get_build_time()))
 
@@ -26,10 +27,10 @@ const build_time = ref(formatDate(get_build_time()))
           我的开发梦想是完成自己的操作系统（OS）、编程语言（Programming Language）以及维系系统正常运行的组件工具（Tool）。
           <br>
 
-          你可以通过我主页的个人公开邮箱<a href="mailto:songzihuan@song-zh.com" target="_blank">songzihuan@song-zh.com</a>联系我。
+          你可以通过我主页的个人公开邮箱 <a href="mailto:songzihuan@song-zh.com" target="_blank">songzihuan@song-zh.com</a> 联系我。
           <br>
 
-          同时，你可以浏览<a href="http://song-zh.com" target="_blank">我的个人网站</a>。尽管有些时候他可能还未准备好提供服务。
+          同时，你可以浏览我的个人网站 <a href="https://song-zh.com" target="_blank">https://song-zh.com</a> 。尽管有些时候他可能还未准备好提供服务。
           <br>
 
           我的个人标志性域名是<span class="bold_span">song-zh.com</span>，请认准该域名，谨防冒充等行为。
@@ -151,6 +152,7 @@ const build_time = ref(formatDate(get_build_time()))
       </div>
     </div>
   </div>
+  <ToGithub></ToGithub>
 </template>
 
 <style scoped lang="scss">
@@ -166,7 +168,7 @@ const build_time = ref(formatDate(get_build_time()))
 
   .title_a {
     width: 100%;
-    font-size: 1.5vw;
+    font-size: 2.5rem;
     color: black;
     text-align: center;
     margin-top: 20px;
@@ -175,7 +177,7 @@ const build_time = ref(formatDate(get_build_time()))
 
   .title_b {
     width: 100%;
-    font-size: 1.3vw;
+    font-size: 2.1rem;
     color: black;
     text-align: center;
     margin-top: 10px;
@@ -184,7 +186,7 @@ const build_time = ref(formatDate(get_build_time()))
 
   .title_c {
     width: 100%;
-    font-size: 1vw;
+    font-size: 1.8rem;
     color: black;
     text-align: left;
     margin-top: 20px;
@@ -200,19 +202,20 @@ const build_time = ref(formatDate(get_build_time()))
 
   .bold_span {
     font-weight: bold;
-    cursor: pointer;
   }
 
   .bold_span:hover {
-    font-size: 0.75vw;
+    font-size: 1.05em;
+    text-decoration: underline;
+    color: navy;
   }
 
   .text {
-    font-size: 0.63vw;
+    font-size: 1.3rem;
   }
 
   .more_line_text {
-    line-height: 3.5vh;
+    line-height: 2em;
   }
 
   .more_line_ul {
@@ -247,5 +250,26 @@ const build_time = ref(formatDate(get_build_time()))
     margin-top: 5px;
     margin-bottom: 15px;
     text-align: center;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1em;
+  }
+
+  a:active {
+    color: #72767b;
+  }
+
+  a:hover {
+    color: #f56c6c;
+  }
+
+  a:hover, a:active {
+    font-size: 1.05em;
+    font-weight: bold;
+    text-decoration: underline dotted;
   }
 </style>

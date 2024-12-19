@@ -4,15 +4,19 @@ import { clearPlaceholderLoading } from '@/utils/placeholder-loading'
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    redirect: '/index'
-  },
-  {
-    path: '/index',
     component: () => import('@/views/index.vue'),
     meta: {
       title: '首页'
     }
-  }
+  },
+  {
+    path: '/index',
+    redirect: '/'
+  },
+  {
+    path: '/home',
+    redirect: '/'
+  },
 ]
 
 const router = createRouter({
