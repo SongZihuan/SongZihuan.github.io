@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview --mode production"
+    "preview": "vite preview --mode production",
+    "build:github": "vue-tsc && vite build --mode github",
+    "preview:github": "vite preview --mode github"
   },
   "dependencies": {
     "@sky-serein/js-utils": "0.0.11",

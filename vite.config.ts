@@ -107,7 +107,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       }
     },
     build: {
-      outDir: `dist-${mode}`,
+      outDir: mode === "github" ? "docs" : `dist-${mode}`,
       // 压缩代码
       minify: 'terser', // 'terser' 相对较慢，但大多数情况下构建后的文件体积更小。'esbuild' 最小化混淆更快但构建后的文件相对更大。
       // 合并小文件

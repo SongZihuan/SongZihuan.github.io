@@ -12,7 +12,7 @@ dist
 dist-ssr
 dist-*
 dist-development
-!dist-production
+dist-production
 *.local
 
 # Editor directories and files
@@ -25,3 +25,5 @@ dist-development
 *.njsproj
 *.sln
 *.sw?
+
+!docs
