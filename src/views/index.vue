@@ -1,0 +1,251 @@
+<script setup lang="ts">
+import {ElDivider} from "element-plus"
+import {get_build_time} from "@/utils/build_time"
+import {formatDate} from "@/utils/time"
+
+const build_time = ref(formatDate(get_build_time()))
+
+</script>
+
+<template>
+  <div class="outside_box">
+    <div class="inner_box">
+      <div class="title_a">Hello, 我是宋子桓（Song Zihuan）🔥</div>
+
+      <el-divider direction="horizontal" class="divider_horizontal"></el-divider>
+
+      <div>
+        <p class="text more_line_text">
+          <span class="bold_span">我是一名出生于2004年6月的码农。</span>
+          <br>
+
+          我主要活跃于<span class="bold_span">中国广州地区</span>，但我通常以互联网身份参与活动。
+          <br>
+
+          我立志成为一名优秀的全栈工程师。
+          我的开发梦想是完成自己的操作系统（OS）、编程语言（Programming Language）以及维系系统正常运行的组件工具（Tool）。
+          <br>
+
+          你可以通过我主页的个人公开邮箱<a href="mailto:songzihuan@song-zh.com" target="_blank">songzihuan@song-zh.com</a>联系我。
+          <br>
+
+          同时，你可以浏览<a href="http://song-zh.com" target="_blank">我的个人网站</a>。尽管有些时候他可能还未准备好提供服务。
+          <br>
+
+          我的个人标志性域名是<span class="bold_span">song-zh.com</span>，请认准该域名，谨防冒充等行为。
+          <br>
+
+          感谢所有人对我的支持，谢谢。
+        </p>
+      </div>
+      <el-divider direction="horizontal" class="divider_horizontal_small"></el-divider>
+
+      <div>
+        <ul class="text more_line_text">
+          <li class="more_line_ul">
+            ✈️ 我是个自由职业者。
+          </li>
+
+
+          <li class="more_line_ul">
+            🤖 我喜欢开发各种代码，例如互联网项目。
+          </li>
+
+
+          <li class="more_line_ul">
+            ❓ 你可以和我讨论任何关于代码的问题，我很乐意为你提供帮助。
+          </li>
+        </ul>
+      </div>
+
+      <div class="title_b">许可（License）</div>
+      <div class="license_box">
+        <p class="text more_line_text">
+          本人的项目在默认情况下使用<a href="https://raw.githubusercontent.com/SuperH-0630/SuperH-0630/refs/heads/main/LICENSE" target="_blank">MIT LICENSE</a>许可证发布。
+          <br>
+
+          MIT License: <a href="https://mit-license.org/" target="_blank">mit-license.org</a>
+        </p>
+      </div>
+
+      <div class="title_b">我的技术栈</div>
+      <div class="skill_list">
+        <div class="skill_box">
+          <div class="title_c">前端</div>
+          <div>
+            <a href="https://getbootstrap.com/docs/3.4/javascript/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/bootstrap-plain.svg" alt="Bootstrap" height="50" /></a>
+            <a href="https://www.w3schools.com/css/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/css3-original-wordmark.svg" alt="CSS3" height="50" /></a>
+            <a href="https://en.wikipedia.org/wiki/HTML5" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/html5-original-wordmark.svg" alt="HTML5" height="50" /></a>
+            <a href="https://www.javascript.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/javascript-original.svg" alt="JavaScript" height="50" /></a>
+            <a href="https://www.typescriptlang.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/typescript-original.svg" alt="TypeScript" height="50" /></a>
+            <a href="https://vuejs.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/vuejs-original-wordmark.svg" alt="Vue.js" height="50" /></a>
+            <a href="https://nextjs.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/nextjs.png" alt="NextJS" height="50" /></a>
+          </div>
+        </div>
+
+        <div class="skill_box">
+          <div class="title_c">后端</div>
+          <div>
+            <a href="https://www.cplusplus.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/cplusplus-original.svg" alt="C++" height="50" /></a>
+            <a href="https://www.python.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/python-original.svg" alt="Python" height="50" /></a>
+            <a href="https://go.dev/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/go-original.svg" alt="Go" height="50" /></a>
+            <a href="https://www.cprogramming.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/c-original.svg" alt="C" height="50" /></a>
+          </div>
+        </div>
+
+        <div class="skill_box">
+          <div class="title_c">运维</div>
+          <div>
+            <a href="https://kubernetes.io/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/kubernetes-icon.svg" alt="Kubernetes" height="50" /></a>
+            <a href="https://www.linux.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/linux-original.svg" alt="Linux" height="50" /></a>
+            <a href="https://github.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" alt="Git" height="50" /></a>
+            <a href="https://www.gnu.org/software/bash/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/gnu_bash-icon.svg" alt="Bash" height="50" /></a>
+            <a href="https://www.docker.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/docker-original-wordmark.svg" alt="Docker" height="50" /></a>
+            <a href="https://redis.io/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/redis-original-wordmark.svg" alt="Redis" height="50" /></a>
+            <a href="https://www.mysql.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/mysql-original-wordmark.svg" alt="MySQL" height="50" /></a>
+            <a href="https://www.mongodb.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/mongodb-original-wordmark.svg" alt="MongoDB" height="50" /></a>
+            <a href="https://www.nginx.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/nginx-original.svg" alt="Nginx" height="50" /></a>
+            <a href="https://mariadb.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/mariadb.png" alt="Maria DB" height="50" /></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="title_b">我的Github动态</div>
+      <div class="stats">
+        <div><img src="https://github-readme-stats.vercel.app/api?username=SuperH-0630&show_icons=true&count_private=true&hide_border=true" /></div>
+        <div><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=SuperH-0630&hide_border=true&layout=compact" /></div>
+      </div>
+
+      <div class="title_b">鸣谢</div>
+      <div>
+        <p class="text more_line_text">
+          感谢<a href="https://profilinator.rishav.dev/" target="_blank">profilinator.rishav.dev</a>在我编辑profile时的支持。
+          <br>
+
+          感谢<a href="https://github.com/" target="_blank">Github</a>等代码托管平台，以及众多的开源项目。他们的出现让我的工作变得轻松和简单。
+          <br>
+
+          <span class="bold_span">特别鸣谢所有对我和我的团队的项目付出贡献的贡献人和贡献团体，本人由衷的感谢。</span>
+        </p>
+      </div>
+
+      <el-divider direction="horizontal" class="divider_horizontal"></el-divider>
+
+      <div class="contact_box">
+        <a href="https://github.com/SuperH-0630" target="_blank">
+          <img src="https://img.shields.io/badge/github-%2324292e.svg?&style=for-the-badge&logo=github&logoColor=white" alt="github" style="margin-bottom: 5px;" />
+        </a>
+        <a href="https://twitter.com/Huan6363630" target="_blank">
+          <img src="https://img.shields.io/badge/twitter-%2300acee.svg?&style=for-the-badge&logo=twitter&logoColor=white" alt="twitter" style="margin-bottom: 5px;" />
+        </a>
+      </div>
+
+      <div class="total">
+        <img src="https://komarev.com/ghpvc/?username=SuperH-0630&&style=flat-square"/>
+      </div>
+
+      <div class="bottom">
+        <p class="text more_line_text">
+          本页面最后更新于：{{ build_time }}。
+        </p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped lang="scss">
+  .outside_box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .inner_box {
+    width: 80%;
+  }
+
+  .title_a {
+    width: 100%;
+    font-size: 1.5vw;
+    color: black;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .title_b {
+    width: 100%;
+    font-size: 1.3vw;
+    color: black;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .title_c {
+    width: 100%;
+    font-size: 1vw;
+    color: black;
+    text-align: left;
+    margin-top: 20px;
+  }
+
+  .divider_horizontal {
+    border-width: 1.5px;
+  }
+
+  .divider_horizontal_small {
+    border-width: 1px;
+  }
+
+  .bold_span {
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .bold_span:hover {
+    font-size: 0.75vw;
+  }
+
+  .text {
+    font-size: 0.63vw;
+  }
+
+  .more_line_text {
+    line-height: 3.5vh;
+  }
+
+  .more_line_ul {
+    margin-bottom: 1.2vh;
+  }
+
+  .skill_list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .skill_box {
+    width: 33.33%;
+  }
+
+  .contact_box, .total {
+    text-align: center;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: center;
+  }
+
+  .license_box {
+    display: flex;
+    justify-content: center;
+  }
+
+  .bottom {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+</style>
