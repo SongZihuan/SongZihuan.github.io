@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview --mode production",
-    "build:github": "vue-tsc && vite build --mode github",
+    "build:github": "vue-tsc && vite build --mode github && node ./github-page/cname.mjs",
     "preview:github": "vite preview --mode github"
   },
   "dependencies": {
