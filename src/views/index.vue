@@ -11,7 +11,16 @@ const build_time = ref(formatDate(get_build_time()))
 <template>
   <div class="outside_box">
     <div class="inner_box">
-      <div class="title_a">Hello, 我是宋子桓（Song Zihuan）🔥</div>
+      <div class="title_a">
+        Hello, 我是
+        <el-tooltip
+            effect="dark"
+            content="Song Zihuan"
+            placement="bottom"
+        >
+          宋子桓🌈
+        </el-tooltip>
+      </div>
 
       <el-divider direction="horizontal" class="divider_horizontal"></el-divider>
 
@@ -62,7 +71,7 @@ const build_time = ref(formatDate(get_build_time()))
       <div class="title_b">许可（License）</div>
       <div class="license_box">
         <p class="text more_line_text">
-          本人的项目在默认情况下使用<a href="https://raw.githubusercontent.com/SuperH-0630/SuperH-0630/refs/heads/main/LICENSE" target="_blank">MIT LICENSE</a>许可证发布。
+          本人的项目在默认情况下使用<a href="https://raw.githubusercontent.com/SongZihuan/SongZihuan/refs/heads/main/LICENSE" target="_blank">MIT LICENSE</a>许可证发布。
           <br>
 
           MIT License: <a href="https://mit-license.org/" target="_blank">mit-license.org</a>
@@ -113,8 +122,8 @@ const build_time = ref(formatDate(get_build_time()))
 
       <div class="title_b">我的Github动态</div>
       <div class="stats">
-        <div><img src="https://github-readme-stats.vercel.app/api?username=SuperH-0630&show_icons=true&count_private=true&hide_border=true" /></div>
-        <div><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=SuperH-0630&hide_border=true&layout=compact" /></div>
+        <div><img src="https://github-readme-stats.vercel.app/api?username=SongZihuan&show_icons=true&count_private=true&hide_border=true" /></div>
+        <div><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=SongZihuan&hide_border=true&layout=compact" /></div>
       </div>
 
       <div class="title_b">鸣谢</div>
@@ -133,16 +142,12 @@ const build_time = ref(formatDate(get_build_time()))
       <el-divider direction="horizontal" class="divider_horizontal"></el-divider>
 
       <div class="contact_box">
-        <a href="https://github.com/SuperH-0630" target="_blank">
+        <a href="https://github.com/SongZihuan" target="_blank">
           <img src="https://img.shields.io/badge/github-%2324292e.svg?&style=for-the-badge&logo=github&logoColor=white" alt="github" style="margin-bottom: 5px;" />
         </a>
         <a href="https://twitter.com/Huan6363630" target="_blank">
           <img src="https://img.shields.io/badge/twitter-%2300acee.svg?&style=for-the-badge&logo=twitter&logoColor=white" alt="twitter" style="margin-bottom: 5px;" />
         </a>
-      </div>
-
-      <div class="total">
-        <img src="https://komarev.com/ghpvc/?username=SuperH-0630&&style=flat-square"/>
       </div>
 
       <div class="bottom">

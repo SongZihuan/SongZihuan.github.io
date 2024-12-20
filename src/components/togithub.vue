@@ -1,7 +1,15 @@
 <script setup lang="ts">
 
+import {getRandomInt} from "@/utils/random";
+
 const toGithub = () => {
-  window.open("https://github.com/SuperH-0630/")
+  window.open("https://github.com/SongZihuan/")
+}
+
+const github = ref(getRandomInt() < 30 ? "Gayhub" : "Github")
+
+const resetGithub = () => {
+  github.value = "Github"
 }
 
 </script>
@@ -9,8 +17,8 @@ const toGithub = () => {
 <template>
   <div class="leftwin">
     <div class="box">
-      <el-text class="box_text" @click="toGithub">
-        前往 Github 主页
+      <el-text class="box_text" @click="toGithub" @mouseenter="resetGithub">
+        前往我的 {{ github }} 主页
       </el-text>
     </div>
   </div>
