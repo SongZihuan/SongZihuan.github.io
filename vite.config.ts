@@ -5,7 +5,8 @@ import fs from 'fs'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 fs.writeFile("./src/utils/build_time.json", JSON.stringify({
-  "compile_time": new Date().getTime()
+  "compile_time": new Date().getTime(),
+  "time_zone": Intl.DateTimeFormat().resolvedOptions().timeZone,
 }), () => {})
 
 // vite项目运行自动检查eslint

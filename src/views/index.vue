@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import {ElDivider} from "element-plus"
-import {get_build_time} from "@/utils/build_time"
+import {get_build_time, get_build_time_zone} from "@/utils/build_time"
 import {formatDate} from "@/utils/time"
 import ToGithub from "@/components/togithub.vue";
 
 const build_time = ref(formatDate(get_build_time()))
+const build_time_zone = ref(get_build_time_zone())
 
 </script>
 
@@ -152,7 +153,7 @@ const build_time = ref(formatDate(get_build_time()))
 
       <div class="bottom">
         <p class="text more_line_text">
-          本页面最后更新于：{{ build_time }}。
+          本页面最后更新于：{{ build_time }} {{ build_time_zone }}。
         </p>
       </div>
     </div>
