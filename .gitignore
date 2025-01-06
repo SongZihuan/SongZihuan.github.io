@@ -27,3 +27,5 @@ dist-production
 *.sw?
 
 !docs
+
+vite.config.ts.timestamp-*
