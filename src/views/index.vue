@@ -37,7 +37,7 @@ const build_time_zone = ref(get_build_time_zone())
           我的开发梦想是完成自己的操作系统（OS）、编程语言（Programming Language）以及维系系统正常运行的组件工具（Tool）。
           <br>
 
-          你可以通过我主页的个人公开邮箱 <a href="mailto:songzihuan@song-zh.com" target="_blank">songzihuan@song-zh.com</a> 联系我。
+          你可以通过我主页的个人公开邮箱 <a href="mailto://songzihuan@song-zh.com" target="_blank">songzihuan@song-zh.com</a> 联系我。
           <br>
 
           同时，你可以浏览我的个人网站 <a href="https://song-zh.com" target="_blank">https://song-zh.com</a> 。尽管有些时候他可能还未准备好提供服务。
