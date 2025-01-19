@@ -16,15 +16,6 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/home',
     redirect: '/'
-  },
-  {
-    path: '/:catchAll(.*)',
-    component: () => import('@/views/notfound.vue'),
-    meta: {
-      title: '4404 Error - Page Not Found',
-      wechat: true,
-      notfound: true
-    }
   }
 ]
 
@@ -37,8 +28,18 @@ const router = createRouter({
 })
 
 router.afterEach((to) => {
+  const websiteName = import.meta.env.VITE_WEBSITE_NAME
+
   if (to.meta.title && typeof to.meta.title === 'string') {
-    document.title = to.meta.title
+    if (websiteName !== '') {
+      document.title = websiteName + '-' + to.meta.title
+    } else {
+      document.title = to.meta.title
+    }
+  } else if (websiteName !== '') {
+    document.title = websiteName
+  } else {
+    document.title = 'Hello'
   }
   clearPlaceholderLoading()
 })
