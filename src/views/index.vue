@@ -5,6 +5,7 @@
   import ToGithub from '@/components/togithub.vue'
   import { extractNumbersFromString } from '@/utils/str'
   import WangAnLogo from '@/assets/images/wangan.png'
+  import SongZihuan from '@/assets/images/songzihuan.jpg'
 
   const build_time = ref(formatDate(get_build_time()))
   const build_time_zone = ref(get_build_time_zone())
@@ -21,7 +22,7 @@
   const showGithubLanguage = ref(false)
 
   function handleWindowResize() {
-    if (window.innerWidth < 160) {
+    if (window.innerWidth < 240) {
       show.value = false
     } else {
       show.value = true
@@ -58,9 +59,25 @@
 <template>
   <div v-if="show" class="outside_box">
     <div class="inner_box">
-      <div class="title_a no-wrap">
+      <div class="title_a">
         Hello, 我是
-        <el-tooltip effect="dark" content="Song Zihuan" placement="bottom"> 宋子桓🌈 </el-tooltip>
+        <el-tooltip effect="dark" placement="bottom" :hide-after="3000">
+          宋子桓🌈
+          <template #content>
+            <div style="display: flex; justify-content: center">
+              <div>
+                <div style="margin-top: 10px">
+                  <el-text class="no-wrap" style="color: white; font-size: 1.5rem"> Song Zihuan </el-text>
+                </div>
+                <div style="display: flex; justify-content: center; width: 100%; margin-top: 10px; text-align: center">
+                  <div style="width: 10vw">
+                    <el-image :src="SongZihuan"> </el-image>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </el-tooltip>
       </div>
 
       <el-divider direction="horizontal" class="divider_horizontal"></el-divider>
