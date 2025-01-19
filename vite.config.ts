@@ -39,16 +39,16 @@ export default ({ mode }: ConfigEnv): UserConfig => {
   }
   if (VITE_HASH === 'false') {
     const names = {
-      entryFileNames: `[name].js`,
-      chunkFileNames: `[name].js`,
-      assetFileNames: `[name].[ext]`
+      entryFileNames: `assets.[name].js`,
+      chunkFileNames: `assets.[name].js`,
+      assetFileNames: `assets.[name].[ext]`
     }
     output = { ...output, ...names }
   } else {
     const names = {
-      entryFileNames: `[name].[hash].js`,
-      chunkFileNames: `[name].[hash].js`,
-      assetFileNames: `[name].[hash].[ext]`
+      entryFileNames: `assets.[name].[hash].js`,
+      chunkFileNames: `assets.[name].[hash].js`,
+      assetFileNames: `assets.[name].[hash].[ext]`
     }
     output = { ...output, ...names }
   }
