@@ -17,6 +17,15 @@ const routes: RouteRecordRaw[] = [
     path: '/home',
     redirect: '/'
   },
+  {
+    path: '/:catchAll(.*)',
+    component: () => import('@/views/notfound.vue'),
+    meta: {
+      title: '4404 Error - Page Not Found',
+      wechat: true,
+      notfound: true
+    }
+  }
 ]
 
 const router = createRouter({

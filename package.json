@@ -4,11 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview --mode production",
-    "build:github": "vue-tsc && vite build --mode github && node ./github-page/cname.mjs",
-    "preview:github": "vite preview --mode github"
+    "lint": "node pnpm-check.mjs && eslint --ext .js,.mjs,.cjs,.ts,.vue --fix .",
+    "lint:debug": "node pnpm-check.mjs &&  eslint --ext .js,.mjs,.cjs,.ts,.vue --debug --fix .",
+    "dev": "node pnpm-check.mjs &&  vite",
+    "build": "node pnpm-check.mjs &&  npx pnpm lint && vue-tsc && vite build",
+    "preview": "node pnpm-check.mjs &&  vite preview --mode production",
+    "build:github": "node pnpm-check.mjs &&  npx pnpm lint && vue-tsc && vite build --mode github && node ./github-page/cname.mjs",
+    "preview:github": "node pnpm-check.mjs &&  vite preview --mode github"
   },
   "dependencies": {
     "@sky-serein/js-utils": "0.0.11",
@@ -19,6 +21,7 @@
     "element-plus": "^2.9.1",
     "html2canvas": "1.4.1",
     "jsencrypt": "3.2.1",
+    "normalcss": "^2.0.5",
     "normalize.css": "^8.0.1",
     "path": "^0.12.7",
     "pinia": "^2.0.35",

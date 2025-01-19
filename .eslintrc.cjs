@@ -24,11 +24,13 @@ module.exports = {
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier',
+    'eslint:recommended',
     'plugin:prettier/recommended'
   ],
+  plugins: ['prettier'],
   rules: {
     // typeScript (https://typescript-eslint.io/rules)
-    '@typescript-eslint/no-unused-vars': 'error', // 禁止定义未使用的变量
+    '@typescript-eslint/no-unused-vars': 'warn', // 禁止定义未使用的变量
     '@typescript-eslint/no-inferrable-types': 'off', // 可以轻松推断的显式类型可能会增加不必要的冗长
     '@typescript-eslint/no-namespace': 'off', // 禁止使用自定义 TypeScript 模块和命名空间。
     '@typescript-eslint/no-explicit-any': 'off', // 禁止使用 any 类型
@@ -38,7 +40,7 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off', // 不允许在 import 语句中使用 require 语句
     '@typescript-eslint/no-empty-function': 'off', // 禁止空函数
     '@typescript-eslint/no-use-before-define': 'off', // 禁止在变量定义之前使用它们
-    '@typescript-eslint/ban-ts-comment': 'off', // 禁止 @ts-<directive> 使用注释或要求在指令后进行描述
+    '@typescript-eslint/ban-ts-comment': 'off', // 禁止 @npm install eslint-plugin-gitignore --save-devts-<directive> 使用注释或要求在指令后进行描述
     '@typescript-eslint/no-non-null-assertion': 'off', // 不允许使用后缀运算符的非空断言(!)
     '@typescript-eslint/explicit-module-boundary-types': 'off', // 要求导出函数和类的公共类方法的显式返回和参数类型
 
@@ -48,7 +50,8 @@ module.exports = {
     'vue/require-default-prop': 'off', // 此规则要求为每个 prop 为必填时，必须提供默认值
     'vue/multi-word-component-names': 'off',
     'no-undef': 'off',
-    'prettier/prettier': 'off',
+    'prettier/prettier': 'warn',
+    'no-unused-vars': 'warn',
     // 禁用debugger
     'no-debugger': 'warn',
     // 禁止出现重复的 case 标签
@@ -114,7 +117,7 @@ module.exports = {
     // 强制函数块最多允许的的语句数量20
     'max-statements': ['warn', 100],
     // 强制回调函数最大嵌套深度
-    'max-nested-callbacks': ['warn', 3],
+    'max-nested-callbacks': ['warn', 5],
     // 强制每一行中所允许的最大语句数量
     'max-statements-per-line': ['warn', { max: 1 }],
     // 要求方法链中每个调用都有一个换行符

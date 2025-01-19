@@ -4,10 +4,14 @@ import { resolve } from 'path'
 import fs from 'fs'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
-fs.writeFile("./src/utils/build_time.json", JSON.stringify({
-  "compile_time": new Date().getTime(),
-  "time_zone": Intl.DateTimeFormat().resolvedOptions().timeZone,
-}), () => {})
+fs.writeFile(
+  './src/utils/build_time.json',
+  JSON.stringify({
+    compile_time: new Date().getTime(),
+    time_zone: Intl.DateTimeFormat().resolvedOptions().timeZone
+  }),
+  () => {}
+)
 
 // vite项目运行自动检查eslint
 import eslintPlugin from 'vite-plugin-eslint'
@@ -65,7 +69,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
           // true启用。生成一次就可以，避免每次工程启动都生成，一旦生成配置文件之后，最好把enable关掉，即改成false。否则这个文件每次会在重新加载的时候重新生成，这会导致eslint有时会找不到这个文件。当需要更新配置文件的时候，再重新打开
           enabled: false, // 默认false
           filepath: './.eslintrc-auto-import.json', // 生成json文件,可以不配置该项，默认就是将生成在根目录
-          globalsPropValue: true,
+          globalsPropValue: true
         }
       }),
       Components({
@@ -110,7 +114,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       }
     },
     build: {
-      outDir: mode === "github" ? "docs" : `dist-${mode}`,
+      outDir: mode === 'github' ? 'docs' : `dist-${mode}`,
       // 压缩代码
       minify: 'terser', // 'terser' 相对较慢，但大多数情况下构建后的文件体积更小。'esbuild' 最小化混淆更快但构建后的文件相对更大。
       // 合并小文件

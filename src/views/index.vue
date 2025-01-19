@@ -1,50 +1,118 @@
 <script setup lang="ts">
-import {ElDivider} from "element-plus"
-import {get_build_time, get_build_time_zone} from "@/utils/build_time"
-import {formatDate} from "@/utils/time"
-import ToGithub from "@/components/togithub.vue";
+  import { ElDivider } from 'element-plus'
+  import { get_build_time, get_build_time_zone } from '@/utils/build_time'
+  import { formatDate } from '@/utils/time'
+  import ToGithub from '@/components/togithub.vue'
+  import { extractNumbersFromString } from '@/utils/str'
+  import WangAnLogo from '@/assets/images/wangan.png'
 
-const build_time = ref(formatDate(get_build_time()))
-const build_time_zone = ref(get_build_time_zone())
+  const build_time = ref(formatDate(get_build_time()))
+  const build_time_zone = ref(get_build_time_zone())
 
+  const ICP = computed(() => import.meta.env.VITE_ICP)
+  const WANGAN = computed(() => import.meta.env.VITE_WANGAN)
+  const WANGAA_NUM = computed(() => extractNumbersFromString(WANGAN.value))
+  const WANGAN_URL = computed(() => `https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${WANGAA_NUM.value}`)
+
+  const show = ref(false)
+  const showStack = ref(false)
+  const statusHorizontal = ref(true) // 水平
+  const showGithubStats = ref(false)
+  const showGithubLanguage = ref(false)
+
+  function handleWindowResize() {
+    if (window.innerWidth < 160) {
+      show.value = false
+    } else {
+      show.value = true
+    }
+
+    if (window.innerWidth < 268) {
+      showStack.value = false
+    } else {
+      showStack.value = true
+    }
+
+    if (window.innerWidth < 788) {
+      statusHorizontal.value = false
+    } else {
+      statusHorizontal.value = true
+    }
+
+    if (window.innerWidth < 478) {
+      showGithubStats.value = false
+    } else {
+      showGithubStats.value = true
+    }
+
+    if (window.innerWidth < 322) {
+      showGithubLanguage.value = false
+    } else {
+      showGithubLanguage.value = true
+    }
+  }
+  window.addEventListener('resize', handleWindowResize)
+  handleWindowResize()
 </script>
 
 <template>
-  <div class="outside_box">
+  <div v-if="show" class="outside_box">
     <div class="inner_box">
-      <div class="title_a">
+      <div class="title_a no-wrap">
         Hello, 我是
-        <el-tooltip
-            effect="dark"
-            content="Song Zihuan"
-            placement="bottom"
-        >
-          宋子桓🌈
-        </el-tooltip>
+        <el-tooltip effect="dark" content="Song Zihuan" placement="bottom"> 宋子桓🌈 </el-tooltip>
       </div>
 
       <el-divider direction="horizontal" class="divider_horizontal"></el-divider>
 
       <div>
         <p class="text more_line_text">
+          <span class="no-wrap">Hello，我是宋子桓（Song Zihuan）。</span>
           <span class="bold_span">我是一名出生于2004年6月的码农。</span>
-          <br>
+          <br />
+
+          <span
+            >曾就职于广州桓创信息科技有限公司，时任技术总监和总经理。您可以称呼我为
+            <span class="no-wrap"> 子桓 </span> 或 <span class="no-wrap"> 桓总 </span>；亦或是我的英文名
+            <el-tooltip effect="dark" placement="bottom">
+              <span class="no-wrap"> Song Zihuan </span>
+              <template #content>
+                <el-text style="color: white"> 为了强调个性和地域特征，我的英文名一般将姓氏（Song）放在首位。 </el-text>
+              </template>
+            </el-tooltip>
+
+            或者
+
+            <el-tooltip effect="dark" placement="bottom">
+              <span class="no-wrap"> Cr. Huan </span>
+              <template #content>
+                <el-text style="color: white">
+                  Cr.和Dr.类似，都是一种缩写。在此，Cr.是Coder的缩写，不过这不是一个常见且标准的缩写。
+                </el-text>
+              </template>
+            </el-tooltip>
+
+            。</span
+          >
+          <br />
 
           我主要活跃于<span class="bold_span">中国广州地区</span>，但我通常以互联网身份参与活动。
-          <br>
+          <br />
 
-          我立志成为一名优秀的全栈工程师。
-          我的开发梦想是完成自己的操作系统（OS）、编程语言（Programming Language）以及维系系统正常运行的组件工具（Tool）。
-          <br>
+          我立志成为一名优秀的全栈工程师。 我的开发梦想是完成自己的操作系统（OS）、编程语言（Programming
+          Language）以及维系系统正常运行的组件工具（Tool）。
+          <br />
 
-          你可以通过我主页的个人公开邮箱 <a href="mailto://songzihuan@song-zh.com" target="_blank">songzihuan@song-zh.com</a> 联系我。
-          <br>
+          你可以通过我主页的个人公开邮箱
+          <a href="mailto://songzihuan@song-zh.com" target="_blank">songzihuan@song-zh.com</a> 联系我。
+          <br />
 
-          同时，你可以浏览我的个人网站 <a href="https://song-zh.com" target="_blank">https://song-zh.com</a> 。尽管有些时候他可能还未准备好提供服务。
-          <br>
+          同时，你可以浏览我的个人网站
+          <a href="https://song-zh.com" target="_blank">https://song-zh.com</a> 。尽管有些时候他可能还未准备好提供服务。
+          <br />
 
           我的个人标志性域名是<span class="bold_span">song-zh.com</span>，请认准该域名，谨防冒充等行为。
-          <br>
+          <br />
 
           感谢所有人对我的支持，谢谢。
         </p>
@@ -53,88 +121,240 @@ const build_time_zone = ref(get_build_time_zone())
 
       <div>
         <ul class="text more_line_text">
-          <li class="more_line_ul">
-            ✈️ 我是个自由职业者。
-          </li>
+          <li class="more_line_ul">✈️ 我是个自由职业者。</li>
 
+          <li class="more_line_ul">🤖 我喜欢开发各种代码，例如互联网项目。</li>
 
-          <li class="more_line_ul">
-            🤖 我喜欢开发各种代码，例如互联网项目。
-          </li>
-
-
-          <li class="more_line_ul">
-            ❓ 你可以和我讨论任何关于代码的问题，我很乐意为你提供帮助。
-          </li>
+          <li class="more_line_ul">❓ 你可以和我讨论任何关于代码的问题，我很乐意为你提供帮助。</li>
         </ul>
       </div>
 
       <div class="title_b">许可（License）</div>
       <div class="license_box">
         <p class="text more_line_text">
-          本人的项目在默认情况下使用<a href="https://raw.githubusercontent.com/SongZihuan/SongZihuan/refs/heads/main/LICENSE" target="_blank">MIT LICENSE</a>许可证发布。
-          <br>
+          本人的项目在默认情况下使用<a
+            href="https://raw.githubusercontent.com/SongZihuan/SongZihuan/refs/heads/main/LICENSE"
+            target="_blank"
+            >MIT LICENSE</a
+          >许可证发布。
+          <br />
 
           MIT License: <a href="https://mit-license.org/" target="_blank">mit-license.org</a>
         </p>
       </div>
 
-      <div class="title_b">我的技术栈</div>
-      <div class="skill_list">
+      <div v-if="showStack" class="title_b">我的技术栈</div>
+      <div v-if="showStack" class="skill_list">
         <div class="skill_box">
           <div class="title_c">前端</div>
           <div>
-            <a href="https://getbootstrap.com/docs/3.4/javascript/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/bootstrap-plain.svg" alt="Bootstrap" height="50" /></a>
-            <a href="https://www.w3schools.com/css/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/css3-original-wordmark.svg" alt="CSS3" height="50" /></a>
-            <a href="https://en.wikipedia.org/wiki/HTML5" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/html5-original-wordmark.svg" alt="HTML5" height="50" /></a>
-            <a href="https://www.javascript.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/javascript-original.svg" alt="JavaScript" height="50" /></a>
-            <a href="https://www.typescriptlang.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/typescript-original.svg" alt="TypeScript" height="50" /></a>
-            <a href="https://vuejs.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/vuejs-original-wordmark.svg" alt="Vue.js" height="50" /></a>
-            <a href="https://nextjs.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/nextjs.png" alt="NextJS" height="50" /></a>
+            <a href="https://getbootstrap.com/docs/3.4/javascript/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/bootstrap-plain.svg"
+                alt="Bootstrap"
+                height="50"
+            /></a>
+            <a href="https://www.w3schools.com/css/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/css3-original-wordmark.svg"
+                alt="CSS3"
+                height="50"
+            /></a>
+            <a href="https://en.wikipedia.org/wiki/HTML5" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/html5-original-wordmark.svg"
+                alt="HTML5"
+                height="50"
+            /></a>
+            <a href="https://www.javascript.com/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/javascript-original.svg"
+                alt="JavaScript"
+                height="50"
+            /></a>
+            <a href="https://www.typescriptlang.org/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/typescript-original.svg"
+                alt="TypeScript"
+                height="50"
+            /></a>
+            <a href="https://vuejs.org/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/vuejs-original-wordmark.svg"
+                alt="Vue.js"
+                height="50"
+            /></a>
+            <a href="https://nextjs.org/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/nextjs.png"
+                alt="NextJS"
+                height="50"
+            /></a>
           </div>
         </div>
 
         <div class="skill_box">
           <div class="title_c">后端</div>
           <div>
-            <a href="https://www.cplusplus.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/cplusplus-original.svg" alt="C++" height="50" /></a>
-            <a href="https://www.python.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/python-original.svg" alt="Python" height="50" /></a>
-            <a href="https://go.dev/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/go-original.svg" alt="Go" height="50" /></a>
-            <a href="https://www.cprogramming.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/c-original.svg" alt="C" height="50" /></a>
+            <a href="https://www.cplusplus.com/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/cplusplus-original.svg"
+                alt="C++"
+                height="50"
+            /></a>
+            <a href="https://www.python.org/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/python-original.svg"
+                alt="Python"
+                height="50"
+            /></a>
+            <a href="https://go.dev/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/go-original.svg"
+                alt="Go"
+                height="50"
+            /></a>
+            <a href="https://www.cprogramming.com/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/c-original.svg"
+                alt="C"
+                height="50"
+            /></a>
           </div>
         </div>
 
         <div class="skill_box">
           <div class="title_c">运维</div>
           <div>
-            <a href="https://kubernetes.io/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/kubernetes-icon.svg" alt="Kubernetes" height="50" /></a>
-            <a href="https://www.linux.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/linux-original.svg" alt="Linux" height="50" /></a>
-            <a href="https://github.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" alt="Git" height="50" /></a>
-            <a href="https://www.gnu.org/software/bash/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/gnu_bash-icon.svg" alt="Bash" height="50" /></a>
-            <a href="https://www.docker.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/docker-original-wordmark.svg" alt="Docker" height="50" /></a>
-            <a href="https://redis.io/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/redis-original-wordmark.svg" alt="Redis" height="50" /></a>
-            <a href="https://www.mysql.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/mysql-original-wordmark.svg" alt="MySQL" height="50" /></a>
-            <a href="https://www.mongodb.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/mongodb-original-wordmark.svg" alt="MongoDB" height="50" /></a>
-            <a href="https://www.nginx.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/nginx-original.svg" alt="Nginx" height="50" /></a>
-            <a href="https://mariadb.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/mariadb.png" alt="Maria DB" height="50" /></a>
+            <a href="https://kubernetes.io/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/kubernetes-icon.svg"
+                alt="Kubernetes"
+                height="50"
+            /></a>
+            <a href="https://www.linux.org/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/linux-original.svg"
+                alt="Linux"
+                height="50"
+            /></a>
+            <a href="https://github.com/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg"
+                alt="Git"
+                height="50"
+            /></a>
+            <a href="https://www.gnu.org/software/bash/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/gnu_bash-icon.svg"
+                alt="Bash"
+                height="50"
+            /></a>
+            <a href="https://www.docker.com/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/docker-original-wordmark.svg"
+                alt="Docker"
+                height="50"
+            /></a>
+            <a href="https://redis.io/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/redis-original-wordmark.svg"
+                alt="Redis"
+                height="50"
+            /></a>
+            <a href="https://www.mysql.com/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/mysql-original-wordmark.svg"
+                alt="MySQL"
+                height="50"
+            /></a>
+            <a href="https://www.mongodb.com/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/mongodb-original-wordmark.svg"
+                alt="MongoDB"
+                height="50"
+            /></a>
+            <a href="https://www.nginx.com/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/nginx-original.svg"
+                alt="Nginx"
+                height="50"
+            /></a>
+            <a href="https://mariadb.org/" target="_blank"
+              ><img
+                style="margin: 10px"
+                src="https://profilinator.rishav.dev/skills-assets/mariadb.png"
+                alt="Maria DB"
+                height="50"
+            /></a>
           </div>
         </div>
       </div>
 
       <div class="title_b">我的Github动态</div>
-      <div class="stats">
-        <div><img src="https://github-readme-stats.vercel.app/api?username=SongZihuan&show_icons=true&count_private=true&hide_border=true" /></div>
-        <div><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=SongZihuan&hide_border=true&layout=compact" /></div>
+      <div v-if="statusHorizontal" class="stats_row">
+        <div>
+          <img
+            v-if="showGithubStats"
+            src="https://github-readme-stats.vercel.app/api?username=SongZihuan&show_icons=true&count_private=true&hide_border=true"
+            alt="Github动态"
+          />
+        </div>
+        <div>
+          <img
+            v-if="showGithubLanguage"
+            src="https://github-readme-stats.vercel.app/api/top-langs/?username=SongZihuan&hide_border=true&layout=compact"
+            alt="Github动态"
+          />
+        </div>
+      </div>
+      <div v-else class="stats_column">
+        <div>
+          <img
+            v-if="showGithubStats"
+            src="https://github-readme-stats.vercel.app/api?username=SongZihuan&show_icons=true&count_private=true&hide_border=true"
+            alt="Github动态"
+          />
+        </div>
+        <div>
+          <img
+            v-if="showGithubLanguage"
+            src="https://github-readme-stats.vercel.app/api/top-langs/?username=SongZihuan&hide_border=true&layout=compact"
+            alt="Github动态"
+          />
+        </div>
       </div>
 
       <div class="title_b">鸣谢</div>
       <div>
         <p class="text more_line_text">
-          感谢<a href="https://profilinator.rishav.dev/" target="_blank">profilinator.rishav.dev</a>在我编辑profile时的支持。
-          <br>
+          感谢<a href="https://profilinator.rishav.dev/" target="_blank">profilinator.rishav.dev</a
+          >在我编辑profile时的支持。
+          <br />
 
-          感谢<a href="https://github.com/" target="_blank">Github</a>等代码托管平台，以及众多的开源项目。他们的出现让我的工作变得轻松和简单。
-          <br>
+          感谢<a href="https://github.com/" target="_blank">Github</a
+          >等代码托管平台，以及众多的开源项目。他们的出现让我的工作变得轻松和简单。
+          <br />
 
           <span class="bold_span">特别鸣谢所有对我和我的团队的项目付出贡献的贡献人和贡献团体，本人由衷的感谢。</span>
         </p>
@@ -144,21 +364,41 @@ const build_time_zone = ref(get_build_time_zone())
 
       <div class="contact_box">
         <a href="https://github.com/SongZihuan" target="_blank">
-          <img src="https://img.shields.io/badge/github-%2324292e.svg?&style=for-the-badge&logo=github&logoColor=white" alt="github" style="margin-bottom: 5px;" />
+          <img
+            src="https://img.shields.io/badge/github-%2324292e.svg?&style=for-the-badge&logo=github&logoColor=white"
+            alt="github"
+            style="margin-bottom: 5px"
+          />
         </a>
         <a href="https://twitter.com/Huan6363630" target="_blank">
-          <img src="https://img.shields.io/badge/twitter-%2300acee.svg?&style=for-the-badge&logo=twitter&logoColor=white" alt="twitter" style="margin-bottom: 5px;" />
+          <img
+            src="https://img.shields.io/badge/twitter-%2300acee.svg?&style=for-the-badge&logo=twitter&logoColor=white"
+            alt="twitter"
+            style="margin-bottom: 5px"
+          />
         </a>
       </div>
 
       <div class="bottom">
         <p class="text more_line_text">
-          本页面最后更新于：{{ build_time }} {{ build_time_zone }}。
+          <span> 友情链接：<a href="https://homepage.song-zh.com" target="_blank"> 宋子桓-HomePage </a> </span>
+          <br />
+          <span> 本页面最后更新于：{{ build_time }} {{ build_time_zone }}。 </span>
+          <br v-if="ICP" />
+          <span v-if="ICP"
+            ><a href="https://beian.miit.gov.cn/" target="_blank"> {{ ICP }} </a></span
+          >
+          <br v-if="WANGAN" />
+          <span v-if="WANGAN">
+            <img style="vertical-align: middle" :src="WangAnLogo" />
+            <a :href="WANGAN_URL" target="_blank"> {{ WANGAN }} </a>
+          </span>
         </p>
       </div>
     </div>
+    <ToGithub></ToGithub>
   </div>
-  <ToGithub></ToGithub>
+  <div v-else></div>
 </template>
 
 <style scoped lang="scss">
@@ -238,13 +478,21 @@ const build_time_zone = ref(get_build_time_zone())
     width: 33.33%;
   }
 
-  .contact_box, .total {
+  .contact_box,
+  .total {
     text-align: center;
   }
 
-  .stats {
+  .stats_row {
     display: flex;
     justify-content: center;
+    flex-direction: row;
+  }
+
+  .stats_column {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
 
   .license_box {
@@ -273,9 +521,14 @@ const build_time_zone = ref(get_build_time_zone())
     color: #f56c6c;
   }
 
-  a:hover, a:active {
+  a:hover,
+  a:active {
     font-size: 1.05em;
     font-weight: bold;
     text-decoration: underline dotted;
+  }
+
+  .no-wrap {
+    white-space: nowrap;
   }
 </style>

@@ -29,6 +29,9 @@ dependencies:
   jsencrypt:
     specifier: 3.2.1
     version: 3.2.1
+  normalcss:
+    specifier: ^2.0.5
+    version: 2.0.5
   normalize.css:
     specifier: ^8.0.1
     version: 8.0.1
@@ -2747,6 +2750,10 @@ packages:
   /node-releases@2.0.10:
     resolution: {integrity: sha512-5GFldHPXVG/YZmFzJvKK2zDSzPKhEp0+ZR5SVaoSag9fsL5YgHbUHDfnG5494ISANDcK4KwPXAx2xqVEydmd7w==}
     dev: true
+
+  /normalcss@2.0.5:
+    resolution: {integrity: sha512-wRvzqLeVUOi5hcPwBLIezGUtsBK/WrKbHyUl9ypKnC/yFJXkm5mIhaekSF4mI/NMiqfmQ9DsZgTvajzOmucmbw==}
+    dev: false
 
   /normalize-path@3.0.0:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}

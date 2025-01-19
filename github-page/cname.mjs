@@ -1,5 +1,5 @@
-import fs from "fs"
+import fs from 'fs'
 
-const domain = "song-zh.com"
+const domain = 'song-zh.com'
 
-fs.writeFile("./docs/CNAME", domain, () => {})
+fs.writeFile('./docs/CNAME', domain, () => {})

@@ -1,9 +1,8 @@
 import axios, { AxiosInstance, AxiosError, AxiosResponse } from 'axios'
-import {ElMessage} from "element-plus"
-import { ElMessageBox } from "element-plus"
+import { ElMessageBox } from 'element-plus'
 
 export const config = {
-    baseURL: import.meta.env.VITE_API_BASE || '/api'
+  baseURL: import.meta.env.VITE_API_BASE || '/api'
 }
 
 const service: AxiosInstance = axios.create(config)
@@ -11,14 +10,14 @@ const service: AxiosInstance = axios.create(config)
 service.interceptors.request.use(
   (config): any => {
     const headers = {
-        ...config.headers,
-        'Content-Type': "application/form-data",
-        "Accept": "application/json",
+      ...config.headers,
+      'Content-Type': 'application/form-data',
+      Accept: 'application/json'
     }
 
     return {
-        ...config,
-        headers: headers
+      ...config,
+      headers: headers
     }
   },
   (error: AxiosError) => {
@@ -31,12 +30,11 @@ service.interceptors.response.use(
     if (response.status === 200) {
       return Promise.resolve(response)
     }
-    ElMessageBox.alert("您遇到了未知的错误", '提示', {
-        confirmButtonText: '好的',
-        callback: () => {},
+    ElMessageBox.alert('您遇到了未知的错误', '提示', {
+      confirmButtonText: '好的',
+      callback: () => {}
     })
     return Promise.reject(response)
-
   },
   (error: AxiosError) => {
     return Promise.reject(error)
@@ -50,7 +48,7 @@ export type Result<T = unknown> = Promise<ResultData<T>> | any
 export type ResultData<T = unknown> = AxiosResponse<result<T>> | any
 
 export interface success {
-    success: boolean
+  success: boolean
 }
 
 export interface result<T = unknown> {
