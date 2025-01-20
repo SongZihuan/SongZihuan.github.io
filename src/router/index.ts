@@ -21,7 +21,7 @@ const routes: RouteRecordRaw[] = [
     path: '/:catchAll(.*)',
     component: () => import('@/views/notfound.vue'),
     meta: {
-      title: '4404 Error - Page Not Found',
+      title: '404 Error - Page Not Found',
       wechat: true,
       notfound: true
     }

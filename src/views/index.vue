@@ -407,7 +407,7 @@
           >
           <br v-if="WANGAN" />
           <span v-if="WANGAN">
-            <img style="vertical-align: middle" :src="WangAnLogo" />
+            <img alt="网络安全图标" style="vertical-align: middle" :src="WangAnLogo" />
             <a :href="WANGAN_URL" target="_blank"> {{ WANGAN }} </a>
           </span>
         </p>
