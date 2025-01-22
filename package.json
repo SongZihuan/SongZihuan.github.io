@@ -9,7 +9,7 @@
     "dev": "node pnpm-check.mjs &&  vite",
     "build": "node pnpm-check.mjs &&  npx pnpm lint && vue-tsc && vite build",
     "preview": "node pnpm-check.mjs &&  vite preview --mode production",
-    "build:github": "node pnpm-check.mjs &&  npx pnpm lint && vue-tsc && vite build --mode github && node ./github-page/cname.mjs",
+    "build:github": "node pnpm-check.mjs &&  npx pnpm lint && vue-tsc && vite build --mode github",
     "preview:github": "node pnpm-check.mjs &&  vite preview --mode github"
   },
   "dependencies": {
