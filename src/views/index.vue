@@ -377,6 +377,16 @@
         </p>
       </div>
 
+      <div class="title_b">赞助</div>
+      <div>
+        <p class="text more_line_text">
+          我在"爱发电"平台以及注册账号，并进行创作者申请。若您喜欢我的项目，或者想进一步了解关于我的开源资讯，可以通过对我的赞助进行了解。
+          <br />
+          点击链接前往我的“爱发电”地址：
+          <a href="https://afdian.com/a/SongZihuan" target="_blank">afdian.com/a/SongZihuan</a>
+        </p>
+      </div>
+
       <el-divider direction="horizontal" class="divider_horizontal"></el-divider>
 
       <div class="contact_box">
