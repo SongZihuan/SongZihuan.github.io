@@ -138,11 +138,11 @@
           Language）以及维系系统正常运行的组件工具（Tool）。
           <br />
 
-          你可以通过我主页的个人公开邮箱
+          您可以通过我主页的个人公开邮箱
           <a href="mailto://songzihuan@song-zh.com" target="_blank">songzihuan@song-zh.com</a> 联系我。
           <br />
 
-          同时，你可以浏览我的个人网站
+          同时，您可以浏览我的个人网站
           <a href="https://song-zh.com" target="_blank">https://song-zh.com</a> 。尽管有些时候他可能还未准备好提供服务。
           <br />
 
@@ -160,7 +160,7 @@
 
           <li class="more_line_ul">🤖 我喜欢开发各种代码，例如互联网项目。</li>
 
-          <li class="more_line_ul">❓ 你可以和我讨论任何关于代码的问题，我很乐意为你提供帮助。</li>
+          <li class="more_line_ul">❓ 您可以和我讨论任何关于代码的问题，我很乐意为您提供帮助。</li>
         </ul>
       </div>
 
@@ -383,7 +383,7 @@
       <div class="title_b">赞助者和贡献者</div>
       <div>
         <p class="text more_line_text">
-          我感谢每一位赞助商和贡献者，有关他们的列表可以在此查询：
+          我感谢每一位赞助者和贡献者，有关他们的列表可以在此查询：
           <a href="https://cas.song-zh.com" target="_blank"> 点击前往查询 </a>
         </p>
       </div>
@@ -393,8 +393,29 @@
         <p class="text more_line_text">
           我在"爱发电"平台注册账号，并进行创作者申请。若您喜欢我的项目，或者想进一步了解关于我的开源资讯，可以通过对我的赞助进行了解。
           <br />
-          点击链接前往我的“爱发电”地址：
+          点击链接前往我的“爱发电”：
           <a href="https://afdian.com/a/SongZihuan" target="_blank">afdian.com/a/SongZihuan</a>
+        </p>
+
+        <p class="text more_line_text">
+          同时，我也在“知识星球”平台注册了账号，并创建了星球。您也可以
+          <br />
+          点击链接前往我的“知识星球”：
+          <a href="https://wx.zsxq.com/group/51111844184424" target="_blank">wx.zsxq.com/group/51111844184424</a>
+          <br />
+          注意：近期星球可能有优惠券，您可以前往我的赞助者和贡献者平台查看：<a
+            href="https://cas.song-zh.com/zsxq.html"
+            target="_blank"
+            >cas.song-zh.com/zsxq.html</a
+          >
+        </p>
+
+        <p class="text more_line_text">
+          最后，您可以选择微信或支付宝对我进行赞助，赞助的相关奖励政策可以可以前往我的赞助者和贡献者平台查看：<a
+            href="https://cas.song-zh.com/sponsors-now.html"
+            target="_blank"
+            >cas.song-zh.com/sponsors-now.html</a
+          >
         </p>
       </div>
 
@@ -435,7 +456,10 @@
       <div class="bottom">
         <p class="text more_line_text">
           <span>
-            友情链接：<a href="https://mit-license.song-zh.com" target="_blank"> 宋子桓 MIT LICENSE 介绍 </a>
+            友情链接：
+            <a href="https://mit-license.song-zh.com" target="_blank"> 宋子桓 MIT LICENSE 介绍 </a>
+            ，
+            <a href="https://cas.song-zh.com" target="_blank"> 宋子桓贡献者与赞助者平台 </a>
           </span>
           <br />
           <span> 本页面最后更新于：{{ build_time }} {{ build_time_zone }}。 </span>

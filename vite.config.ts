@@ -71,7 +71,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         imports: ['vue', 'vue-router', 'pinia'], // 自动导入vue和vue-router相关函数
         dts: './auto-import.d.ts', // 生成 `auto-import.d.ts` 全局声明
         resolvers: [ElementPlusResolver()],
-        // 使用自动导入插件，需要在配置相应的eslint，否则eslint以为你没有导入，会报错
+        // 使用自动导入插件，需要在配置相应的eslint，否则eslint以为您没有导入，会报错
         eslintrc: {
           // true启用。生成一次就可以，避免每次工程启动都生成，一旦生成配置文件之后，最好把enable关掉，即改成false。否则这个文件每次会在重新加载的时候重新生成，这会导致eslint有时会找不到这个文件。当需要更新配置文件的时候，再重新打开
           enabled: false, // 默认false
