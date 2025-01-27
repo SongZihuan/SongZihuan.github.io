@@ -21,6 +21,24 @@
   const showGithubStats = ref(false)
   const showGithubLanguage = ref(false)
 
+  // 定义一个响应式变量来存储当前时间
+  const currentTime = ref('')
+  const currentTimeZone = ref(Intl.DateTimeFormat().resolvedOptions().timeZone)
+  const updateTime = () => {
+    // 获取当前时间并格式化
+    currentTime.value = formatDate(new Date())
+  }
+
+  // 使用onMounted钩子在组件挂载后开始定时更新时间
+  onMounted(() => {
+    updateTime()
+    const timer = setInterval(updateTime, 1000)
+
+    onUnmounted(() => {
+      clearInterval(timer)
+    })
+  })
+
   function handleWindowResize() {
     if (window.innerWidth < 240) {
       show.value = false
@@ -146,17 +164,17 @@
         </ul>
       </div>
 
+      <el-divider direction="horizontal" class="divider_horizontal"></el-divider>
+
       <div class="title_b">许可（License）</div>
       <div class="license_box">
         <p class="text more_line_text">
-          本人的项目在默认情况下使用<a
-            href="https://raw.githubusercontent.com/SongZihuan/SongZihuan/refs/heads/main/LICENSE"
-            target="_blank"
-            >MIT LICENSE</a
-          >许可证发布。
+          本人的项目在默认情况下使用
+          <a href="https://mit-license.song-zh.com" target="_blank"> MIT LICENSE </a> 许可证发布。
           <br />
-
-          MIT License: <a href="https://mit-license.org/" target="_blank">mit-license.org</a>
+          MIT LICENSE 官网：<a href="https://mit-license.org/" target="_blank">点击前往</a>
+          <br />
+          MIT LICENSE 官网（代理）： <a href="https://mit-license-org.song-zh.com/" target="_blank">点击前往</a>
         </p>
       </div>
 
@@ -362,7 +380,27 @@
         </div>
       </div>
 
-      <div class="title_b">鸣谢</div>
+      <div class="title_b">赞助者和贡献者</div>
+      <div>
+        <p class="text more_line_text">
+          我感谢每一位赞助商和贡献者，有关他们的列表可以在此查询：
+          <a href="https://cas.song-zh.com" target="_blank"> 点击前往查询 </a>
+        </p>
+      </div>
+
+      <div class="title_b_little">如何赞助？</div>
+      <div>
+        <p class="text more_line_text">
+          我在"爱发电"平台注册账号，并进行创作者申请。若您喜欢我的项目，或者想进一步了解关于我的开源资讯，可以通过对我的赞助进行了解。
+          <br />
+          点击链接前往我的“爱发电”地址：
+          <a href="https://afdian.com/a/SongZihuan" target="_blank">afdian.com/a/SongZihuan</a>
+        </p>
+      </div>
+
+      <el-divider direction="horizontal" class="divider_horizontal"></el-divider>
+
+      <div class="import_title_b">鸣谢</div>
       <div>
         <p class="text more_line_text">
           感谢<a href="https://profilinator.rishav.dev/" target="_blank">profilinator.rishav.dev</a
@@ -373,17 +411,12 @@
           >等代码托管平台，以及众多的开源项目。他们的出现让我的工作变得轻松和简单。
           <br />
 
-          <span class="bold_span">特别鸣谢所有对我和我的团队的项目付出贡献的贡献人和贡献团体，本人由衷的感谢。</span>
-        </p>
-      </div>
-
-      <div class="title_b">赞助</div>
-      <div>
-        <p class="text more_line_text">
-          我在"爱发电"平台注册账号，并进行创作者申请。若您喜欢我的项目，或者想进一步了解关于我的开源资讯，可以通过对我的赞助进行了解。
-          <br />
-          点击链接前往我的“爱发电”地址：
-          <a href="https://afdian.com/a/SongZihuan" target="_blank">afdian.com/a/SongZihuan</a>
+          <span class="bold_span"
+            ><span class="import_span">特别鸣谢</span>所有对我和我的团队的项目付出贡献的贡献人和贡献团体，<span
+              class="import_span"
+              >本人由衷的感谢</span
+            >。</span
+          >
         </p>
       </div>
 
@@ -397,20 +430,17 @@
             style="margin-bottom: 5px"
           />
         </a>
-        <a href="https://twitter.com/Huan6363630" target="_blank">
-          <img
-            src="https://img.shields.io/badge/twitter-%2300acee.svg?&style=for-the-badge&logo=twitter&logoColor=white"
-            alt="twitter"
-            style="margin-bottom: 5px"
-          />
-        </a>
       </div>
 
       <div class="bottom">
         <p class="text more_line_text">
-          <span> 友情链接：<a href="https://homepage.song-zh.com" target="_blank"> 宋子桓-HomePage </a> </span>
+          <span>
+            友情链接：<a href="https://mit-license.song-zh.com" target="_blank"> 宋子桓 MIT LICENSE 介绍 </a>
+          </span>
           <br />
           <span> 本页面最后更新于：{{ build_time }} {{ build_time_zone }}。 </span>
+          <br />
+          <span> 当前时间：{{ currentTime }} {{ currentTimeZone }}。 </span>
           <br v-if="ICP" />
           <span v-if="ICP"
             ><a href="https://beian.miit.gov.cn/" target="_blank"> {{ ICP }} </a></span
@@ -452,9 +482,33 @@
     margin-bottom: 20px;
   }
 
+  .import_title_b {
+    width: 100%;
+    font-size: 2.1rem;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-decoration: underline;
+  }
+
+  .import_title_b:hover {
+    font-size: 3rem;
+  }
+
   .title_b {
     width: 100%;
     font-size: 2.1rem;
+    color: black;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .title_b_little {
+    width: 100%;
+    font-size: 1.8rem;
     color: black;
     text-align: center;
     margin-top: 10px;
@@ -485,6 +539,10 @@
     font-size: 1.05em;
     text-decoration: underline;
     color: navy;
+  }
+
+  .import_span {
+    color: red;
   }
 
   .text {
@@ -542,6 +600,7 @@
     text-decoration: none;
     cursor: pointer;
     font-size: 1em;
+    font-weight: bold;
   }
 
   a:active {

@@ -5,7 +5,7 @@
     window.open('https://github.com/SongZihuan/')
   }
 
-  const github = ref(getRandomInt() < 30 ? 'Gayhub' : 'Github')
+  const github = ref(getRandomInt() < 10 ? 'Gayhub' : 'Github')
 
   const resetGithub = () => {
     github.value = 'Github'

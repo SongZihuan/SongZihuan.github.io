@@ -1,6 +1,17 @@
 <script setup lang="ts">
-  import { placeholderLoading } from '@/utils/placeholder-loading'
   import 'normalize.css'
+  import { placeholderLoading } from '@/utils/placeholder-loading'
+  import Logo from '@/assets/images/logo-icon.png'
+
+  function setIcon() {
+    // 动态设置favicon
+    const link = document.createElement('link')
+    link.rel = 'shortcut icon'
+    link.href = Logo // 或者 favicon.png 对于PNG格式
+    document.head.appendChild(link)
+  }
+
+  document.addEventListener('DOMContentLoaded', setIcon)
 
   placeholderLoading()
 </script>
