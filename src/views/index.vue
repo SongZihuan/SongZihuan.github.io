@@ -380,7 +380,7 @@
       <div class="title_b">赞助</div>
       <div>
         <p class="text more_line_text">
-          我在"爱发电"平台以及注册账号，并进行创作者申请。若您喜欢我的项目，或者想进一步了解关于我的开源资讯，可以通过对我的赞助进行了解。
+          我在"爱发电"平台注册账号，并进行创作者申请。若您喜欢我的项目，或者想进一步了解关于我的开源资讯，可以通过对我的赞助进行了解。
           <br />
           点击链接前往我的“爱发电”地址：
           <a href="https://afdian.com/a/SongZihuan" target="_blank">afdian.com/a/SongZihuan</a>
@@ -415,9 +415,13 @@
           <span v-if="ICP"
             ><a href="https://beian.miit.gov.cn/" target="_blank"> {{ ICP }} </a></span
           >
-          <br v-if="WANGAN" />
-          <span v-if="WANGAN">
-            <img alt="网络安全图标" style="vertical-align: middle" :src="WangAnLogo" />
+          <br v-if="WANGAN && WANGAN_URL" />
+          <span v-if="WANGAN && WANGAN_URL">
+            <img
+              alt="网络安全图标"
+              style="vertical-align: middle; max-width: 20px; max-height: 20px"
+              :src="WangAnLogo"
+            />
             <a :href="WANGAN_URL" target="_blank"> {{ WANGAN }} </a>
           </span>
         </p>
