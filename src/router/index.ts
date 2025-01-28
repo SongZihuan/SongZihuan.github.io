@@ -18,6 +18,21 @@ const routes: RouteRecordRaw[] = [
     redirect: '/'
   },
   {
+    path: '/message',
+    component: () => import('@/views/message.vue'),
+    meta: {
+      title: '首页'
+    }
+  },
+  {
+    path: '/msg',
+    redirect: '/message'
+  },
+  {
+    path: '/mail',
+    redirect: '/message'
+  },
+  {
     path: '/:catchAll(.*)',
     component: () => import('@/views/notfound.vue'),
     meta: {

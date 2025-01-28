@@ -2,16 +2,16 @@ import axios, { AxiosInstance, AxiosError, AxiosResponse } from 'axios'
 import { ElMessageBox } from 'element-plus'
 
 export const config = {
-  baseURL: import.meta.env.VITE_API_BASE || '/api'
+  baseURL: import.meta.env.VITE_MSG_API_BASE_URL || '/message'
 }
 
-const service: AxiosInstance = axios.create(config)
+const msgservice: AxiosInstance = axios.create(config)
 
-service.interceptors.request.use(
+msgservice.interceptors.request.use(
   (config): any => {
     const headers = {
       ...config.headers,
-      'Content-Type': 'application/form-data',
+      'Content-Type': 'application/json;charset=utf-8',
       Accept: 'application/json;charset=utf-8'
     }
 
@@ -25,7 +25,7 @@ service.interceptors.request.use(
   }
 )
 
-service.interceptors.response.use(
+msgservice.interceptors.response.use(
   (response: AxiosResponse) => {
     if (response.status === 200) {
       return Promise.resolve(response)
@@ -52,21 +52,13 @@ service.interceptors.response.use(
   }
 )
 
-export type Success = Result<success>
-export type SuccessData = ResultData<success>
+export type Result = Promise<ResultData> | any
+export type ResultData = AxiosResponse<result> | any
 
-export type Result<T = unknown> = Promise<ResultData<T>> | any
-export type ResultData<T = unknown> = AxiosResponse<result<T>> | any
-
-export interface success {
+export interface result {
+  message: string
+  code: number
   success: boolean
 }
 
-export interface result<T = unknown> {
-  message: string
-  code: number
-  data: T
-  [key: string]: any // 任意额外数学
-}
-
-export default service
+export default msgservice

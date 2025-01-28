@@ -40,35 +40,11 @@
   })
 
   function handleWindowResize() {
-    if (window.innerWidth < 240) {
-      show.value = false
-    } else {
-      show.value = true
-    }
-
-    if (window.innerWidth < 268) {
-      showStack.value = false
-    } else {
-      showStack.value = true
-    }
-
-    if (window.innerWidth < 788) {
-      statusHorizontal.value = false
-    } else {
-      statusHorizontal.value = true
-    }
-
-    if (window.innerWidth < 478) {
-      showGithubStats.value = false
-    } else {
-      showGithubStats.value = true
-    }
-
-    if (window.innerWidth < 322) {
-      showGithubLanguage.value = false
-    } else {
-      showGithubLanguage.value = true
-    }
+    show.value = window.innerWidth >= 240
+    showStack.value = window.innerWidth >= 268
+    statusHorizontal.value = window.innerWidth >= 788
+    showGithubStats.value = window.innerWidth >= 478
+    showGithubLanguage.value = window.innerWidth >= 322
   }
   window.addEventListener('resize', handleWindowResize)
   handleWindowResize()
@@ -140,6 +116,10 @@
 
           您可以通过我主页的个人公开邮箱
           <a href="mailto://songzihuan@song-zh.com" target="_blank">songzihuan@song-zh.com</a> 联系我。
+          <br />
+
+          您可以通过我主页的
+          <router-link to="/message">电子信箱</router-link> 联系我。
           <br />
 
           同时，您可以浏览我的个人网站
@@ -619,7 +599,8 @@
     text-align: center;
   }
 
-  a {
+  a,
+  router-link {
     color: black;
     text-decoration: none;
     cursor: pointer;
@@ -627,16 +608,20 @@
     font-weight: bold;
   }
 
-  a:active {
+  a:active,
+  router-link:active {
     color: #72767b;
   }
 
-  a:hover {
+  a:hover,
+  router-link:hover {
     color: #f56c6c;
   }
 
   a:hover,
-  a:active {
+  a:active,
+  router-link:hover,
+  router-link:active {
     font-size: 1.05em;
     font-weight: bold;
     text-decoration: underline dotted;
