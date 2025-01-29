@@ -8,6 +8,7 @@
   "repository": "https://github.com/SongZihuan/SongZihuan.github.io",
   "homepage": "https://song-zh.com",
   "scripts": {
+    "init": "npx pnpm install",
     "lint": "node pnpm-check.mjs && eslint --ext .js,.mjs,.cjs,.ts,.vue --fix .",
     "lint:debug": "node pnpm-check.mjs &&  eslint --ext .js,.mjs,.cjs,.ts,.vue --debug --fix .",
     "dev": "node pnpm-check.mjs &&  vite",
