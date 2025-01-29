@@ -64,8 +64,8 @@
                   <el-text class="no-wrap" style="color: white; font-size: 1.5rem"> Song Zihuan </el-text>
                 </div>
                 <div style="display: flex; justify-content: center; width: 100%; margin-top: 10px; text-align: center">
-                  <div style="width: 10vw">
-                    <el-image :src="SongZihuan"> </el-image>
+                  <div class="szh-img-box">
+                    <el-image class="szh-img" :src="SongZihuan"> </el-image>
                   </div>
                 </div>
               </div>
@@ -629,5 +629,13 @@
 
   .no-wrap {
     white-space: nowrap;
+  }
+
+  .szh-img-box {
+    max-width: calc(min(90vw, 170px));
+  }
+
+  .szh-img {
+    border-radius: 20px;
   }
 </style>
