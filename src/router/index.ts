@@ -21,7 +21,7 @@ const routes: RouteRecordRaw[] = [
     path: '/message',
     component: () => import('@/views/message.vue'),
     meta: {
-      title: '首页'
+      title: '电子信箱'
     }
   },
   {
@@ -52,7 +52,7 @@ const router = createRouter({
 })
 
 router.afterEach((to) => {
-  const websiteName = import.meta.env.VITE_WEBSITE_NAME
+  const websiteName = window.title
 
   if (to.meta.title && typeof to.meta.title === 'string') {
     if (websiteName !== '') {
@@ -67,4 +67,5 @@ router.afterEach((to) => {
   }
   clearPlaceholderLoading()
 })
+
 export default router

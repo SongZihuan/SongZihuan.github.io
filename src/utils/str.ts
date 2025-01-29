@@ -54,6 +54,8 @@ export const isEmail = (email: string) => /^.+@.+\..+$/i.test(email)
  */
 declare global {
   interface Window {
+    description: string
+    title: string
     scrollLeft?: number
     scrollTop?: number
   }
