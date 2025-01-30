@@ -328,14 +328,14 @@
 
       <div class="title_b">我的Github动态</div>
       <div v-if="statusHorizontal" class="stats_row">
-        <div>
+        <div class="stat">
           <img
             v-if="showGithubStats"
             src="https://github-readme-stats.vercel.app/api?username=SongZihuan&show_icons=true&count_private=true&hide_border=true"
             alt="Github动态"
           />
         </div>
-        <div>
+        <div class="stat">
           <img
             v-if="showGithubLanguage"
             src="https://github-readme-stats.vercel.app/api/top-langs/?username=SongZihuan&hide_border=true&layout=compact"
@@ -344,14 +344,14 @@
         </div>
       </div>
       <div v-else class="stats_column">
-        <div>
+        <div class="stat">
           <img
             v-if="showGithubStats"
             src="https://github-readme-stats.vercel.app/api?username=SongZihuan&show_icons=true&count_private=true&hide_border=true"
             alt="Github动态"
           />
         </div>
-        <div>
+        <div class="stat">
           <img
             v-if="showGithubLanguage"
             src="https://github-readme-stats.vercel.app/api/top-langs/?username=SongZihuan&hide_border=true&layout=compact"
@@ -579,13 +579,19 @@
   .stats_row {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: row;
   }
 
   .stats_column {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
+  }
+
+  .stat {
+    margin: 5px;
   }
 
   .license_box {
