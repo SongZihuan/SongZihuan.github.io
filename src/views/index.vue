@@ -6,6 +6,7 @@
   import { extractNumbersFromString } from '@/utils/str'
   import WangAnLogo from '@/assets/images/wangan.png'
   import SongZihuan from '@/assets/images/songzihuan.jpg'
+  import ORCiD_ICON from '@/assets/images/ORCIDiD_icon16x16.png'
 
   const build_time = ref(formatDate(get_build_time()))
   const build_time_zone = ref(get_build_time_zone())
@@ -141,6 +142,18 @@
           <li class="more_line_ul">🤖 我喜欢开发各种代码，例如互联网项目。</li>
 
           <li class="more_line_ul">❓ 您可以和我讨论任何关于代码的问题，我很乐意为您提供帮助。</li>
+
+          <li class="more_line_ul">
+            <a
+              href="https://orcid.org/0009-0008-5167-1636"
+              target="orcid.widget"
+              rel="me noopener noreferrer"
+              style="vertical-align: bottom"
+            >
+              <img :src="ORCiD_ICON" style="width: 1em; margin-inline-start: 0.5em" alt="ORCID iD icon" />
+              https://orcid.org/0009-0008-5167-1636
+            </a>
+          </li>
         </ul>
       </div>
 
