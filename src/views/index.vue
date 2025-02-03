@@ -123,8 +123,16 @@
           <router-link to="/message">电子信箱</router-link> 联系我。
           <br />
 
-          同时，您可以浏览我的个人网站
-          <a href="https://song-zh.com" target="_blank">https://song-zh.com</a> 。尽管有些时候他可能还未准备好提供服务。
+          同时，您可以浏览我的个人网站：
+          <a href="https://song-zh.com" target="_blank"> song-zh.com </a>。
+          <br />
+
+          以及，我的个人Github站点：
+          <a href="https://github.com/SongZihuan" target="_blank"> github.com/SongZihuan </a>。
+          <br />
+
+          还要，我的个人Git仓库拖货站点：
+          <a href="https://code-git.song-zh.com" target="_blank"> code-git.song-zh.com </a>。
           <br />
 
           我的个人标志性域名是<span class="bold_span">song-zh.com</span>，请认准该域名，谨防冒充等行为。
@@ -450,9 +458,11 @@
         <p class="text more_line_text">
           <span>
             友情链接：
-            <a href="https://mit-license.song-zh.com" target="_blank"> 宋子桓 MIT LICENSE 介绍 </a>
+            <a href="https://mit-license.song-zh.com" target="_blank"> MIT LICENSE 介绍 </a>
             ，
-            <a href="https://cas.song-zh.com" target="_blank"> 宋子桓贡献者与赞助者平台 </a>
+            <a href="https://cas.song-zh.com" target="_blank"> 贡献者与赞助者平台 </a>
+            ，
+            <a href="https://code-git.song-zh.com" target="_blank"> 代码仓库托管 </a>
           </span>
           <br />
           <span> 本页面最后更新于：{{ build_time }} {{ build_time_zone }}。 </span>
