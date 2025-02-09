@@ -40,7 +40,7 @@
     }
 
     loading.value = true
-    sendMsgToMail(form.value.name, form.value.message)
+    sendMsgToMail(form.value.name, form.value.email, form.value.message)
       .then((response) => {
         const data = response.data
         if (data.success) {
