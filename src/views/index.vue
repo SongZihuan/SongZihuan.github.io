@@ -116,7 +116,7 @@
           <br />
 
           您可以通过我主页的个人公开邮箱
-          <a href="mailto://songzihuan@song-zh.com" target="_blank">songzihuan@song-zh.com</a> 联系我。
+          <a href="mailto://contact@song-zh.com" target="_blank">contact@song-zh.com</a> 联系我。
           <br />
 
           您可以通过我主页的

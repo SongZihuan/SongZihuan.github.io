@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { ElDivider, ElMessage } from 'element-plus'
   import { sendMsgToMail } from '@/api/message/sendmsg'
+  import { isEmail } from '@/utils/str'
 
   const router = useRouter()
 
@@ -8,12 +9,16 @@
   const show = ref(true)
   const form = ref({
     name: '',
+    email: '',
     message: ''
   })
 
   const checkMessage = computed(() => form.value.message.length >= 1 && form.value.message.length <= 150)
   const checkName = computed(() => form.value.name.length <= 25)
-  const checkAll = computed(() => checkMessage.value && checkName.value)
+  const checkEmail = computed(
+    () => form.value.email == '' || (form.value.email.length < 40 && isEmail(form.value.email))
+  )
+  const checkAll = computed(() => checkMessage.value && checkName.value && checkEmail.value)
 
   function handleWindowResize() {
     show.value = window.innerWidth >= 240
@@ -69,6 +74,10 @@
               <el-input v-model="form.name" :maxlength="25" clearable show-word-limit />
             </el-form-item>
 
+            <el-form-item label="你的邮箱（Your email）">
+              <el-input v-model="form.email" :maxlength="40" clearable show-word-limit />
+            </el-form-item>
+
             <el-form-item label="你的留言（Your message）">
               <el-input
                 v-model="form.message"
@@ -92,7 +101,18 @@
           <div class="center_tips_box">
             <div class="tips_box">
               <div v-if="!checkName" class="tip_box" style="display: flex; justify-content: center">
-                <el-alert title="名字不能超过25位！" :closable="false" type="warning" center show-icon> </el-alert>
+                <el-alert title="名字不能超过25位，选填！" :closable="false" type="warning" center show-icon>
+                </el-alert>
+              </div>
+              <div v-if="!checkEmail" class="tip_box" style="display: flex; justify-content: center">
+                <el-alert
+                  title="请输入正确的邮箱，不得超过40个字符，选填！"
+                  :closable="false"
+                  type="warning"
+                  center
+                  show-icon
+                >
+                </el-alert>
               </div>
               <div v-if="!checkMessage" class="tip_box" style="display: flex; justify-content: center">
                 <el-alert title="消息的长度要在1-150个字符！" :closable="false" type="warning" center show-icon>
@@ -146,5 +166,9 @@
   .tips_box {
     width: 75%;
     margin-top: 5px;
+  }
+
+  .tip_box {
+    margin-bottom: 5px;
   }
 </style>
