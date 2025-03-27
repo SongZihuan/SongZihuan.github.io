@@ -1,6 +1,8 @@
 <script setup lang="ts">
   import 'normalize.css'
   import { placeholderLoading } from '@/utils/placeholder-loading'
+  import { isWeixinBrowser } from '@/utils/ua'
+
   import Logo from './assets/images/logo.png'
   import LogoBig from './assets/images/logo_big.png'
 
@@ -100,6 +102,8 @@
   const toWebsite2 = () => {
     window.location.href = 'https://www.song-zh.com'
   }
+
+  window.wechat = isWeixinBrowser()
 
   placeholderLoading()
 </script>

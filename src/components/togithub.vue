@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { getRandomInt } from '@/utils/random'
+  import CatFont from '/src/assets/font/cat.ttf'
 
   const toGithub = () => {
     window.open('https://github.com/SongZihuan/')
@@ -12,20 +13,26 @@
   }
 
   const show = ref(false)
+  const load = ref(false)
+
+  const setLoadTrue = () => {
+    setTimeout(() => (load.value = true), 1000)
+  }
 
   function handleWindowResize() {
-    if (window.innerWidth < 936) {
-      show.value = false
-    } else {
-      show.value = true
-    }
+    show.value = window.innerWidth >= 936
   }
+
   window.addEventListener('resize', handleWindowResize)
   handleWindowResize()
 </script>
 
 <template>
-  <div v-if="show" class="leftwin">
+  <div v-if="show" v-show="false">
+    <el-image :src="CatFont" @load="setLoadTrue" @error="setLoadTrue"></el-image>
+  </div>
+
+  <div v-if="load && show" class="leftwin">
     <div class="box">
       <el-text class="box_text" @click="toGithub" @mouseenter="resetGithub"> 前往我的 {{ github }} 主页 </el-text>
     </div>
@@ -34,7 +41,14 @@
 </template>
 
 <style scoped lang="scss">
-  $box-bg-color: #2448aa;
+  @font-face {
+    font-family: 'CatFont'; /* 自定义字体名称 */
+    src: url('/src/assets/font/cat.ttf') format('truetype'); /* 指定字体路径和格式 */
+    font-weight: normal; /* 字体粗细 */
+    font-style: normal; /* 字体样式 */
+  }
+
+  $box-bg-color: #9fc5e8;
 
   .leftwin {
     --box-bg-color: #{$box-bg-color};
@@ -50,6 +64,7 @@
   }
 
   .box {
+    font-family: 'CatFont', sans-serif;
     padding: 5px;
   }
 

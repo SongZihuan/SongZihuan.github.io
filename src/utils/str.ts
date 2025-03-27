@@ -56,6 +56,7 @@ declare global {
   interface Window {
     description: string
     title: string
+    wechat: boolean
     scrollLeft?: number
     scrollTop?: number
   }

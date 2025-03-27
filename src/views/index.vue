@@ -4,11 +4,15 @@
   import { formatDate } from '@/utils/time'
   import ToGithub from '@/components/togithub.vue'
   import { extractNumbersFromString } from '@/utils/str'
+  import SparkMD5 from 'spark-md5'
+
   import WangAnLogo from '@/assets/images/wangan.png'
   import SongZihuan from '@/assets/images/songzihuan.png'
-  import ORCiD_ICON from '@/assets/images/ORCIDiD_icon16x16.png'
-
-  import SparkMD5 from 'spark-md5'
+  import ORCiDLogo from '@/assets/images/ORCIDiD_icon16x16.png'
+  import WechatGZHLogo from '@/assets/images/wxgzh.png'
+  import ZhiHuLogo from '@/assets/images/zhihu.png'
+  import GithubLogo from '@/assets/images/github.png'
+  import HuanGogsLogo from '@/assets/images/huan-gogs.png'
 
   const build_time = ref(formatDate(get_build_time()))
   const build_time_zone = ref(get_build_time_zone())
@@ -52,6 +56,13 @@
       clearInterval(timer)
     })
   })
+
+  const WechatClick = () => {
+    if (window.wechat) {
+      window.location.href =
+        'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzk0NDYzNTI1Ng==#wechat_redirect'
+    }
+  }
 
   function handleWindowResize() {
     show.value = window.innerWidth >= 240
@@ -99,7 +110,13 @@
 
       <div>
         <p class="text more_line_text">
-          <span class="no-wrap">大家好，我是宋子桓，字桓枢，号云楩散人！</span>
+          大家好，
+          <span class="no-wrap">我是宋子桓</span>
+          ，
+          <span class="no-wrap">字桓枢</span>
+          ，
+          <span class="no-wrap">号云楩散人</span>
+          ！
           <br />
 
           <span class="no-warp">
@@ -157,35 +174,6 @@
           Language）以及维系系统正常运行的组件工具（Tool）。
           <br />
 
-          您可以通过我主页的个人公开邮箱
-          <el-tooltip effect="dark" placement="bottom">
-            <a href="mailto://{{ personalEmail }}" target="_blank">{{ personalEmail }}</a> 联系我。
-            <template #content>
-              <el-text style="color: white">
-                或者备用邮箱：<a style="color: white" href="mailto://{{ personalEmailBackup }}" target="_blank">{{
-                  personalEmailBackup
-                }}</a>
-              </el-text>
-            </template>
-          </el-tooltip>
-          <br />
-
-          您可以通过我主页的
-          <router-link to="/message">电子信箱</router-link> 联系我。
-          <br />
-
-          同时，您可以浏览我的个人网站：
-          <a href="https://song-zh.com" target="_blank"> song-zh.com </a>。
-          <br />
-
-          以及，我的个人Github站点：
-          <a href="https://github.com/SongZihuan" target="_blank"> github.com/SongZihuan </a>。
-          <br />
-
-          还有，我的个人Git仓库站点：
-          <a href="https://code-git.song-zh.com" target="_blank"> code-git.song-zh.com </a>。
-          <br />
-
           我的个人标志性域名是<span class="bold_span">song-zh.com</span>，请认准该域名，谨防冒充等行为。
           <br />
 
@@ -196,11 +184,7 @@
 
       <div>
         <ul class="text more_line_text">
-          <li class="more_line_ul">✈️ 我是个自由职业者。</li>
-
-          <li class="more_line_ul">🤖 我喜欢开发各种代码，例如互联网项目。</li>
-
-          <li class="more_line_ul">❓ 您可以和我讨论任何关于代码的问题，我很乐意为您提供帮助。</li>
+          <li class="more_line_ul"><a href="https://song-zh.com" target="_blank">💻 个人网站</a></li>
 
           <li class="more_line_ul">
             <a
@@ -209,10 +193,95 @@
               rel="me noopener noreferrer"
               style="vertical-align: bottom"
             >
-              <img :src="ORCiD_ICON" style="width: 1em; margin-inline-start: 0.5em" alt="ORCID iD icon" />
+              <img
+                :src="ORCiDLogo"
+                style="object-fit: contain; width: 1em; margin-inline-start: 0.5em"
+                alt="ORCID iD icon"
+              />
               https://orcid.org/0009-0008-5167-1636
             </a>
           </li>
+
+          <li class="more_line_ul">
+            📧
+            <el-tooltip effect="dark" placement="bottom">
+              <a :href="`mailto://${personalEmail}`" target="_blank">{{ personalEmail }}</a> 联系我。
+              <template #content>
+                <el-text style="color: white">
+                  或者备用邮箱：
+                  <a style="color: white" :href="`mailto://${personalEmailBackup}`" target="_blank">
+                    📧 {{ personalEmailBackup }}
+                  </a>
+                </el-text>
+              </template>
+            </el-tooltip>
+          </li>
+
+          <li class="more_line_ul">
+            <el-tooltip effect="dark" placement="bottom">
+              <router-link to="/message">📩 电子信箱</router-link> 联系我。
+              <template #content>
+                <el-text style="color: white"> 采用网页发信的形式，而无需准备电子邮件系统。 </el-text>
+              </template>
+            </el-tooltip>
+          </li>
+
+          <li class="more_line_ul">
+            <a href="https://www.zhihu.com/people/super-huan0630" target="_blank">
+              <div class="li_box_outside">
+                <div class="zhihu_img_box">
+                  <img style="object-fit: contain; width: calc(min(5vw, 50px))" alt="知乎Logo" :src="ZhiHuLogo" />
+                </div>
+                <div class="zhihu_text_box">宋子桓</div>
+              </div>
+            </a>
+          </li>
+
+          <li class="more_line_ul">
+            <a href="https://github.com/SongZihuan" target="_blank">
+              <div class="li_box_outside">
+                <div class="github_img_box">
+                  <img style="object-fit: contain; width: calc(min(3.5vw, 35px))" alt="GithubLogo" :src="GithubLogo" />
+                </div>
+                <div class="github_text_box">宋子桓（SongZiuan）</div>
+              </div>
+            </a>
+          </li>
+
+          <li class="more_line_ul">
+            <a href="https://code-git.song-zh.com" target="_blank">
+              <div class="li_box_outside">
+                <div class="huan_gogs_img_box">
+                  <img
+                    style="object-fit: contain; width: calc(min(5vw, 50px))"
+                    alt="HuanGogsLogo"
+                    :src="HuanGogsLogo"
+                  />
+                </div>
+                <div class="huan_gogs_text_box">宋子桓-个人公开Git仓库</div>
+              </div>
+            </a>
+          </li>
+
+          <li class="more_line_ul">
+            <div class="li_box_outside">
+              <div class="wx_img_box">
+                <el-image fit="contain" :src="WechatGZHLogo" @click="WechatClick"></el-image>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <el-divider direction="horizontal" class="divider_horizontal"></el-divider>
+
+      <div>
+        <ul class="text more_line_text">
+          <li class="more_line_ul">✈️ 我是个自由职业者。</li>
+
+          <li class="more_line_ul">🤖 我喜欢开发各种代码，例如互联网项目。</li>
+
+          <li class="more_line_ul">❓ 您可以和我讨论任何关于代码的问题，我很乐意为您提供帮助。</li>
         </ul>
       </div>
 
@@ -445,29 +514,29 @@
         <p class="text more_line_text">
           我在"爱发电"平台注册账号，并进行创作者申请。若您喜欢我的项目，或者想进一步了解关于我的开源资讯，可以通过对我的赞助进行了解。
           <br />
-          点击链接前往我的“爱发电”：
-          <a href="https://afdian.com/a/SongZihuan" target="_blank">afdian.com/a/SongZihuan</a>
+          点击链接前往我的
+          <a href="https://afdian.com/a/SongZihuan" target="_blank">“爱发电”</a>
+          。
         </p>
 
         <p class="text more_line_text">
           同时，我也在“知识星球”平台注册了账号，并创建了星球。您也可以
           <br />
-          点击链接前往我的“知识星球”：
-          <a href="https://wx.zsxq.com/group/51111844184424" target="_blank">wx.zsxq.com/group/51111844184424</a>
+          点击链接前往我的
+          <a href="https://wx.zsxq.com/group/51111844184424" target="_blank">“知识星球”</a>。
           <br />
-          注意：近期星球可能有优惠券，您可以前往我的赞助者和贡献者平台查看：<a
-            href="https://cas.song-zh.com/zsxq.html"
-            target="_blank"
-            >cas.song-zh.com/zsxq.html</a
-          >
+          注意：近期星球可能有优惠券，您可以前往我的<a href="https://cas.song-zh.com/zsxq.html" target="_blank"
+            >赞助者和贡献者平台</a
+          >查看。
         </p>
 
         <p class="text more_line_text">
-          最后，您可以选择微信或支付宝对我进行赞助，赞助的相关奖励政策可以可以前往我的赞助者和贡献者平台查看：<a
+          最后，您可以选择微信或支付宝对我进行赞助，赞助的相关奖励政策可以可以前往我的<a
             href="https://cas.song-zh.com/sponsors-now.html"
             target="_blank"
-            >cas.song-zh.com/sponsors-now.html</a
+            >赞助者和贡献者平台</a
           >
+          查看：
         </p>
       </div>
 
@@ -713,5 +782,58 @@
 
   .szh-img-box {
     max-width: calc(min(90vw, 170px));
+  }
+
+  .wx_img_box {
+    max-width: 60vh;
+  }
+
+  .li_box_outside {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .zhihu_img_box {
+    max-width: calc(min(5vw, 50px));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .zhihu_text_box {
+    margin-left: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .github_img_box {
+    max-width: calc(min(5vw, 50px));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .github_text_box {
+    margin-left: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .huan_gogs_img_box {
+    max-width: calc(min(5vw, 50px));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .huan_gogs_text_box {
+    margin-left: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>
