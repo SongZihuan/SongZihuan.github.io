@@ -5,8 +5,10 @@
   import ToGithub from '@/components/togithub.vue'
   import { extractNumbersFromString } from '@/utils/str'
   import WangAnLogo from '@/assets/images/wangan.png'
-  import SongZihuan from '@/assets/images/songzihuan.jpg'
+  import SongZihuan from '@/assets/images/songzihuan.png'
   import ORCiD_ICON from '@/assets/images/ORCIDiD_icon16x16.png'
+
+  import SparkMD5 from 'spark-md5'
 
   const build_time = ref(formatDate(get_build_time()))
   const build_time_zone = ref(get_build_time_zone())
@@ -30,6 +32,17 @@
     currentTime.value = formatDate(new Date())
   }
 
+  const personalEmail = ref('contact@song-zh.com')
+  const personalEmailBackup = ref('contact@hmail.song-zh.com')
+
+  const emailHeader = computed(() => {
+    const emailHash = SparkMD5.hash(personalEmail.value.trim().toLowerCase())
+    return `https://www.gravatar.com/avatar/${emailHash}?s=200&d=identicon`
+  })
+
+  const imgLoadEmail = ref(0)
+  const imgLoadBackup = ref(false)
+
   // 使用onMounted钩子在组件挂载后开始定时更新时间
   onMounted(() => {
     updateTime()
@@ -52,60 +65,89 @@
 </script>
 
 <template>
+  <div v-show="false">
+    <el-image class="szh-img" :src="emailHeader" @load="imgLoadEmail = 1" @error="imgLoadEmail = 2"></el-image>
+    <el-image class="szh-img" :src="SongZihuan" @load="imgLoadBackup = true"></el-image>
+  </div>
   <div v-if="show" class="outside_box">
     <div class="inner_box">
       <div class="title_a">
-        Hello, 我是
-        <el-tooltip effect="dark" placement="bottom" :hide-after="3000">
+        Hello，我是
+        <el-tooltip
+          v-if="imgLoadEmail == 1 || (imgLoadEmail == 2 && imgLoadBackup)"
+          effect="dark"
+          placement="bottom"
+          :hide-after="3000"
+        >
           宋子桓🌈
           <template #content>
             <div style="display: flex; justify-content: center">
               <div>
-                <div style="margin-top: 10px">
-                  <el-text class="no-wrap" style="color: white; font-size: 1.5rem"> Song Zihuan </el-text>
-                </div>
                 <div style="display: flex; justify-content: center; width: 100%; margin-top: 10px; text-align: center">
                   <div class="szh-img-box">
-                    <el-image class="szh-img" :src="SongZihuan"> </el-image>
+                    <el-image class="szh-img" :src="imgLoadEmail == 1 ? emailHeader : SongZihuan"></el-image>
                   </div>
                 </div>
               </div>
             </div>
           </template>
         </el-tooltip>
+        <span v-else> 宋子桓🌈 </span>
       </div>
 
       <el-divider direction="horizontal" class="divider_horizontal"></el-divider>
 
       <div>
         <p class="text more_line_text">
-          <span class="no-wrap">Hello，我是宋子桓（Song Zihuan）。</span>
-          <span class="bold_span">我是一名出生于2004年6月的码农。</span>
+          <span class="no-wrap">大家好，我是宋子桓，字桓枢，号云楩散人！</span>
           <br />
 
-          <span
-            >曾就职于广州桓创信息科技有限公司，时任技术总监和总经理。您可以称呼我为
-            <span class="no-wrap"> 子桓 </span> 或 <span class="no-wrap"> 桓总 </span>；亦或是我的英文名
+          <span class="no-warp">
+            在英语语境下，一般采用
             <el-tooltip effect="dark" placement="bottom">
               <span class="no-wrap"> Song Zihuan </span>
               <template #content>
                 <el-text style="color: white"> 为了强调个性和地域特征，我的英文名一般将姓氏（Song）放在首位。 </el-text>
               </template>
             </el-tooltip>
-
-            或者
-
+            作为我的英文名，在特殊场合下可能采用
             <el-tooltip effect="dark" placement="bottom">
-              <span class="no-wrap"> Cr. Huan </span>
+              <span class="no-wrap"> Zihuan Song </span>
               <template #content>
-                <el-text style="color: white">
-                  Cr.和Dr.类似，都是一种缩写。在此，Cr.是Coder的缩写，不过这不是一个常见且标准的缩写。
-                </el-text>
+                <el-text style="color: white"> 正常英文语境下，一般将姓氏（Song）放在后面。 </el-text>
               </template>
             </el-tooltip>
+            。
+          </span>
 
-            。</span
-          >
+          <br />
+          <span class="bold_span">我是一名出生于2004年6月的码农。</span>
+          <br />
+
+          您可以称呼我为
+          <span class="no-wrap"> 子桓 </span>
+          或
+          <span class="no-wrap"> 小桓 </span>
+          ；亦或是我的英文名
+          <span class="no-wrap"> Huan </span>
+          或者
+          <el-tooltip effect="dark" placement="bottom">
+            <span class="no-wrap"> Cr. Huan </span>
+            <template #content>
+              <el-text style="color: white">
+                Cr.和Dr.类似，都是一种缩写。在此，Cr.是Coder的缩写，不过这不是一个常见且标准的缩写。
+              </el-text>
+            </template>
+          </el-tooltip>
+          。
+          <br />
+
+          曾就职于广州桓创信息科技有限公司，时任技术总监和总经理。我个人在习惯上比较喜欢他人称呼我为
+          <span class="no-wrap"> 桓工 </span>
+          或
+          <span class="no-wrap"> 换总监 </span>
+          亦或是
+          <span class="no-wrap"> 桓经理 </span>
           <br />
 
           我主要活跃于<span class="bold_span">中国广州地区</span>，但我通常以互联网身份参与活动。
@@ -116,7 +158,16 @@
           <br />
 
           您可以通过我主页的个人公开邮箱
-          <a href="mailto://contact@song-zh.com" target="_blank">contact@song-zh.com</a> 联系我。
+          <el-tooltip effect="dark" placement="bottom">
+            <a href="mailto://{{ personalEmail }}" target="_blank">{{ personalEmail }}</a> 联系我。
+            <template #content>
+              <el-text style="color: white">
+                或者备用邮箱：<a style="color: white" href="mailto://{{ personalEmailBackup }}" target="_blank">{{
+                  personalEmailBackup
+                }}</a>
+              </el-text>
+            </template>
+          </el-tooltip>
           <br />
 
           您可以通过我主页的
@@ -131,7 +182,7 @@
           <a href="https://github.com/SongZihuan" target="_blank"> github.com/SongZihuan </a>。
           <br />
 
-          还要，我的个人Git仓库拖货站点：
+          还有，我的个人Git仓库站点：
           <a href="https://code-git.song-zh.com" target="_blank"> code-git.song-zh.com </a>。
           <br />
 
@@ -662,9 +713,5 @@
 
   .szh-img-box {
     max-width: calc(min(90vw, 170px));
-  }
-
-  .szh-img {
-    border-radius: 20px;
   }
 </style>

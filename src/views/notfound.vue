@@ -9,7 +9,10 @@
     <li>A mistyped address</li>
     <li>Or the page has been moved</li>
   </ul>
-  <p>Try going back to the <router-link to="/">homepage</router-link> or contact us if the problem persists.</p>
+  <p>
+    Try going back to the <router-link to="/">homepage</router-link> or
+    <a href="mailto://contact@song-zh.com">contact us</a> if the problem persists.
+  </p>
 </template>
 
 <style scoped lang="scss">

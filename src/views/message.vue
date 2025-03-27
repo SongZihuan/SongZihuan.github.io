@@ -13,12 +13,15 @@
     message: ''
   })
 
-  const checkMessage = computed(() => form.value.message.length >= 1 && form.value.message.length <= 150)
+  const checkMessageShort = computed(() => form.value.message.length >= 1)
+  const checkMessageLong = computed(() => form.value.message.length <= 50000)
   const checkName = computed(() => form.value.name.length <= 25)
   const checkEmail = computed(
     () => form.value.email == '' || (form.value.email.length < 40 && isEmail(form.value.email))
   )
-  const checkAll = computed(() => checkMessage.value && checkName.value && checkEmail.value)
+  const checkAll = computed(
+    () => checkMessageShort.value && checkMessageLong.value && checkName.value && checkEmail.value
+  )
 
   function handleWindowResize() {
     show.value = window.innerWidth >= 240
@@ -79,15 +82,7 @@
             </el-form-item>
 
             <el-form-item label="你的留言（Your message）">
-              <el-input
-                v-model="form.message"
-                type="textarea"
-                :minlength="1"
-                :maxlength="150"
-                :rows="10"
-                clearable
-                show-word-limit
-              />
+              <el-input v-model="form.message" type="textarea" :minlength="1" :rows="10" clearable show-word-limit />
             </el-form-item>
           </el-form>
           <div class="center_btn_box">
@@ -114,9 +109,18 @@
                 >
                 </el-alert>
               </div>
-              <div v-if="!checkMessage" class="tip_box" style="display: flex; justify-content: center">
-                <el-alert title="消息的长度要在1-150个字符！" :closable="false" type="warning" center show-icon>
+              <div v-if="!checkMessageLong" class="tip_box" style="display: flex; justify-content: center">
+                <el-alert
+                  title="消息的长度太长，可采用邮件形式发送！"
+                  :closable="false"
+                  type="warning"
+                  center
+                  show-icon
+                >
                 </el-alert>
+              </div>
+              <div v-if="!checkMessageShort" class="tip_box" style="display: flex; justify-content: center">
+                <el-alert title="消息不能为空！" :closable="false" type="warning" center show-icon> </el-alert>
               </div>
             </div>
           </div>
