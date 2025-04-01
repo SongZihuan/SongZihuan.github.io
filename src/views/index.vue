@@ -13,6 +13,8 @@
   import ZhiHuLogo from '@/assets/images/zhihu.png'
   import GithubLogo from '@/assets/images/github.png'
   import HuanGogsLogo from '@/assets/images/huan-gogs.png'
+  import DouyinLogo from '@/assets/images/douyin.png'
+  import DouyinCode from '@/assets/images/douyincode.jpg'
 
   const build_time = ref(formatDate(get_build_time()))
   const build_time_zone = ref(get_build_time_zone())
@@ -64,6 +66,14 @@
     }
   }
 
+  const DouyinClick = () => {
+    if (!window.wechat) {
+      window.open(
+        'https://www.douyin.com/user/MS4wLjABAAAAooXOm7-ajC5xt5rTUmAbcKofzNgz4vCNmUcURWX9OSvzYS1ZXVGVlBWR5ZRhwASR?from_tab_name=main'
+      )
+    }
+  }
+
   function handleWindowResize() {
     show.value = window.innerWidth >= 240
     showStack.value = window.innerWidth >= 268
@@ -92,14 +102,8 @@
         >
           宋子桓🌈
           <template #content>
-            <div style="display: flex; justify-content: center">
-              <div>
-                <div style="display: flex; justify-content: center; width: 100%; margin-top: 10px; text-align: center">
-                  <div class="szh-img-box">
-                    <el-image class="szh-img" :src="imgLoadEmail == 1 ? emailHeader : SongZihuan"></el-image>
-                  </div>
-                </div>
-              </div>
+            <div class="szh-img-box">
+              <el-image fit="contain" class="szh-img" :src="imgLoadEmail == 1 ? emailHeader : SongZihuan"></el-image>
             </div>
           </template>
         </el-tooltip>
@@ -162,7 +166,7 @@
           曾就职于广州桓创信息科技有限公司，时任技术总监和总经理。我个人在习惯上比较喜欢他人称呼我为
           <span class="no-wrap"> 桓工 </span>
           或
-          <span class="no-wrap"> 换总监 </span>
+          <span class="no-wrap"> 桓总监 </span>
           亦或是
           <span class="no-wrap"> 桓经理 </span>
           <br />
@@ -195,7 +199,7 @@
             >
               <img
                 :src="ORCiDLogo"
-                style="object-fit: contain; width: 1em; margin-inline-start: 0.5em"
+                style="object-fit: contain; width: 1.3em; margin-inline-start: 0.5em"
                 alt="ORCID iD icon"
               />
               https://orcid.org/0009-0008-5167-1636
@@ -227,10 +231,21 @@
           </li>
 
           <li class="more_line_ul">
+            <a href="https://gravatar.com/songhuanshu" target="_blank">
+              <img
+                alt="Gravatar"
+                style="object-fit: contain; width: 1em"
+                :src="imgLoadEmail == 1 ? emailHeader : SongZihuan"
+              />
+              Gravatar - 宋子桓
+            </a>
+          </li>
+
+          <li class="more_line_ul">
             <a href="https://www.zhihu.com/people/super-huan0630" target="_blank">
               <div class="li_box_outside">
                 <div class="zhihu_img_box">
-                  <img style="object-fit: contain; width: calc(min(5vw, 50px))" alt="知乎Logo" :src="ZhiHuLogo" />
+                  <img style="object-fit: contain; width: 50px" alt="知乎Logo" :src="ZhiHuLogo" />
                 </div>
                 <div class="zhihu_text_box">宋子桓</div>
               </div>
@@ -238,10 +253,28 @@
           </li>
 
           <li class="more_line_ul">
+            <div class="li_box_outside">
+              <el-tooltip effect="dark" placement="bottom">
+                <div style="display: flex" @click="DouyinClick">
+                  <div class="douyin_img_box">
+                    <img style="object-fit: contain; width: 30px" alt="抖音Logo" :src="DouyinLogo" />
+                  </div>
+                  <div class="douyin_text_box">宋子桓-SongZihuan</div>
+                </div>
+                <template #content>
+                  <div class="douyin-code-box">
+                    <el-image fit="contain" class="douyin-code" :src="DouyinCode"></el-image>
+                  </div>
+                </template>
+              </el-tooltip>
+            </div>
+          </li>
+
+          <li class="more_line_ul">
             <a href="https://github.com/SongZihuan" target="_blank">
               <div class="li_box_outside">
                 <div class="github_img_box">
-                  <img style="object-fit: contain; width: calc(min(3.5vw, 35px))" alt="GithubLogo" :src="GithubLogo" />
+                  <img style="object-fit: contain; width: 35px" alt="GithubLogo" :src="GithubLogo" />
                 </div>
                 <div class="github_text_box">宋子桓（SongZiuan）</div>
               </div>
@@ -252,11 +285,7 @@
             <a href="https://code-git.song-zh.com" target="_blank">
               <div class="li_box_outside">
                 <div class="huan_gogs_img_box">
-                  <img
-                    style="object-fit: contain; width: calc(min(5vw, 50px))"
-                    alt="HuanGogsLogo"
-                    :src="HuanGogsLogo"
-                  />
+                  <img style="object-fit: contain; width: 50px" alt="HuanGogsLogo" :src="HuanGogsLogo" />
                 </div>
                 <div class="huan_gogs_text_box">宋子桓-个人公开Git仓库</div>
               </div>
@@ -780,12 +809,20 @@
     white-space: nowrap;
   }
 
-  .szh-img-box {
-    max-width: calc(min(90vw, 170px));
+  .szh-img-box,
+  .szh-img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .douyin-code-box,
+  .douyin-code {
+    width: 300px;
+    min-height: 300px;
   }
 
   .wx_img_box {
-    max-width: 60vh;
+    width: calc(min(90vw, 300px));
   }
 
   .li_box_outside {
@@ -796,7 +833,7 @@
   }
 
   .zhihu_img_box {
-    max-width: calc(min(5vw, 50px));
+    max-width: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -809,8 +846,22 @@
     align-items: center;
   }
 
+  .douyin_img_box {
+    max-width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .douyin_text_box {
+    margin-left: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .github_img_box {
-    max-width: calc(min(5vw, 50px));
+    max-width: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -824,7 +875,7 @@
   }
 
   .huan_gogs_img_box {
-    max-width: calc(min(5vw, 50px));
+    max-width: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
