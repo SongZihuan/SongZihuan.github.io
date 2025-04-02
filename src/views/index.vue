@@ -163,7 +163,7 @@
           。
           <br />
 
-          曾就职于广州桓创信息科技有限公司，时任技术总监和总经理。我个人在习惯上比较喜欢他人称呼我为
+          我曾就职于广州桓创信息科技有限公司，时任技术总监和总经理。我个人在习惯上比较喜欢他人称呼我为
           <span class="no-wrap"> 桓工 </span>
           或
           <span class="no-wrap"> 桓总监 </span>
@@ -822,7 +822,7 @@
   }
 
   .wx_img_box {
-    width: calc(min(90vw, 300px));
+    width: calc(min(90vw, 400px));
   }
 
   .li_box_outside {

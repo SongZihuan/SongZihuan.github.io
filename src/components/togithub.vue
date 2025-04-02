@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { getRandomInt } from '@/utils/random'
-  import CatFont from '/src/assets/font/cat.ttf'
+  import CatFont from '/src/assets/font/cat.woff2'
 
   const toGithub = () => {
     window.open('https://github.com/SongZihuan/')
@@ -43,7 +43,7 @@
 <style scoped lang="scss">
   @font-face {
     font-family: 'CatFont'; /* 自定义字体名称 */
-    src: url('/src/assets/font/cat.ttf') format('truetype'); /* 指定字体路径和格式 */
+    src: url('/src/assets/font/cat.woff2') format('truetype'); /* 指定字体路径和格式 */
     font-weight: normal; /* 字体粗细 */
     font-style: normal; /* 字体样式 */
   }
